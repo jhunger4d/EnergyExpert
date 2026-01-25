@@ -15,6 +15,7 @@
             --card-bg: #f7fafc;
             --border: #e2e8f0;
             --muted: #718096;
+            --navy: #0a192f;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -26,6 +27,7 @@
                 --card-bg: #1e293b;
                 --border: #334155;
                 --muted: #94a3b8;
+                --navy: #0f172a;
             }
         }
 
@@ -43,57 +45,65 @@
         .hero-content { flex: 1.2; }
         .hero-image { flex: 0.8; }
         .profile-pic { width: 100%; max-width: 400px; border-radius: 30px; border: 8px solid var(--card-bg); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .hero h1 { font-size: 4rem; line-height: 1; margin-bottom: 25px; }
-        .hero p { font-size: 1.25rem; color: var(--muted); margin-bottom: 35px; max-width: 600px; }
+        .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 25px; }
+        .hero p { font-size: 1.2rem; color: var(--muted); margin-bottom: 35px; }
 
-        /* Sections */
+        /* History & Proof Sections */
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .history-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 50px; }
+        .stat-box { background: var(--card-bg); padding: 30px; border-radius: 20px; border-left: 5px solid var(--accent); }
+        .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .photo-item { border-radius: 15px; overflow: hidden; height: 300px; border: 1px solid var(--border); }
+        .photo-item img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Sections General */
         section { padding: 100px 8%; }
-        h2 { font-size: 2.5rem; margin-bottom: 40px; text-align: center; }
+        h2 { font-size: 2.5rem; margin-bottom: 15px; text-align: center; color: var(--text); }
 
         /* Reviews */
-        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .review-card { background: var(--card-bg); padding: 35px; border-radius: 20px; border: 1px solid var(--border); }
-        .stars { color: var(--accent); margin-bottom: 15px; }
-        .review-img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-top: 20px; border: 1px solid var(--border); }
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .review-card { background: var(--card-bg); padding: 35px; border-radius: 20px; border: 1px solid var(--border); display: flex; flex-direction: column; }
+        .stars { color: var(--accent); margin-bottom: 15px; font-size: 0.9rem;}
+        .review-img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-top: auto; padding-top: 20px; }
+        .g-link { color: var(--primary); font-weight: 700; text-decoration: none; display: block; margin-top: 40px; text-align: center; }
 
         /* Form Styling */
-        .form-container { max-width: 700px; margin: 0 auto; background: var(--card-bg); padding: 50px; border-radius: 30px; border: 1px solid var(--border); }
+        .form-container { max-width: 750px; margin: 0 auto; background: var(--card-bg); padding: 50px; border-radius: 30px; border: 1px solid var(--border); }
         .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
-        input[type="text"], input[type="tel"], input[type="email"], textarea { 
+        label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        input, select, textarea { 
             width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 1rem;
         }
         
-        /* Time Selection */
-        .time-options { display: flex; gap: 15px; margin-top: 10px; }
-        .time-btn { flex: 1; text-align: center; }
+        .time-options { display: flex; gap: 10px; margin-top: 10px; }
+        .time-btn { flex: 1; }
         .time-btn input { display: none; }
         .time-btn label { 
-            padding: 12px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; display: block; background: var(--bg);
+            padding: 12px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; display: block; background: var(--bg); text-align: center; font-size: 0.8rem;
         }
         .time-btn input:checked + label { background: var(--primary); color: white; border-color: var(--primary); }
 
-        /* Referral Logic */
-        .referral-block { border-left: 3px solid var(--accent); padding-left: 20px; margin-bottom: 20px; position: relative; animation: slideIn 0.3s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
-        .remove-ref { color: #f56565; cursor: pointer; font-size: 0.8rem; font-weight: 700; margin-top: 5px; display: inline-block; }
+        /* Referral Logic Updates */
+        .referral-block { border: 2px dashed var(--accent); padding: 25px; border-radius: 20px; margin-bottom: 25px; background: var(--bg); position: relative; animation: slideIn 0.3s; }
+        @keyframes slideIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
+        .remove-ref { color: #f56565; cursor: pointer; font-size: 0.75rem; font-weight: 800; float: right; }
 
         .btn { 
             display: inline-block; padding: 18px 35px; border-radius: 12px; font-weight: 800; text-decoration: none; 
             cursor: pointer; border: none; font-size: 1rem; width: 100%; text-align: center; transition: 0.2s;
         }
-        .btn-primary { background: var(--primary); color: #fff; }
-        .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
-        .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text); margin-bottom: 20px; }
+        .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text); margin-bottom: 25px; }
 
         /* Modal */
-        #vcardModal { display:none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .modal-box { background: var(--bg); padding: 40px; border-radius: 25px; text-align: center; width: 90%; max-width: 400px; }
+        #vcardModal { display:none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .modal-box { background: var(--bg); padding: 40px; border-radius: 30px; text-align: center; width: 90%; max-width: 420px; border: 1px solid var(--border); }
 
         @media (max-width: 900px) {
-            .hero { flex-direction: column; text-align: center; padding-top: 40px; }
-            .hero h1 { font-size: 2.5rem; }
-            nav { flex-direction: column; gap: 10px; }
+            .hero, .history-grid, .photo-grid { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
+            .hero h1 { font-size: 2.8rem; }
+            nav { flex-direction: column; gap: 15px; padding: 20px; }
+            .form-container { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -109,175 +119,91 @@
 
 <section class="hero">
     <div class="hero-content">
-        <span class="badge">STOCKTON & SURROUNDING AREA'S TOP RATED REP</span>
-        <h1>Clean Energy <br><span class="accent-text">Done Right.</span></h1>
-        <p style="font-size: 1.2rem; margin-bottom: 30px; color: #64748b;">Jon Hungerford provides professional-grade solar strategies for homeowners who value integrity over high-pressure sales.</p>
-        <button onclick="downloadVCard()" class="btn-main" style="width:auto; padding: 15px 30px;">SAVE MY CONTACT INFO</button>
+        <h1 style="color:var(--text)">Clean Energy. <br><span style="color:var(--accent)">Done Right.</span></h1>
+        <p>Jon Hungerford provides professional-grade solar strategies for homeowners who value integrity over high-pressure sales.</p>
+        <button onclick="downloadVCard()" class="btn btn-primary" style="width: auto;">SAVE MY DIRECT CONTACT</button>
     </div>
     <div class="hero-image">
         <img src="profile.jpg" alt="Jon Hungerford" class="profile-pic">
     </div>
 </section>
 
-<section class="history">
-    <h2>The Standard of Excellence</h2>
+<section style="background: var(--card-bg);">
+    <div class="section-header">
+        <h2>The Standard of Excellence</h2>
+        <p>Expertise built on years of local service in San Joaquin County.</p>
+    </div>
     <div class="history-grid">
         <div class="stat-box">
-            <h3>Veteran Solar Consultant</h3>
+            <h3 style="margin-bottom:10px;">Veteran Solar Consultant</h3>
             <p>With years of experience as a dedicated Sunrun representative, Jon has navigated the complexities of California's energy landscape (NEM 2.0 to 3.0) to ensure homeowners maximize their investment.</p>
         </div>
         <div class="stat-box">
-            <h3>Community Rooted</h3>
+            <h3 style="margin-bottom:10px;">Community Rooted</h3>
             <p>Based in Stockton, Jon doesn't just sell solar; he builds local infrastructure. He maintains a perfect 5.0-star rating by prioritizing post-install support and long-term customer satisfaction.</p>
         </div>
     </div>
-</section>
-
-<section class="proof">
-    <h2>Real Results in San Joaquin County</h2>
-    <p>Professional installations and happy homeowners across the County.</p>
-    <div class="photo-grid">
-        <div class="photo-item"><img src="install_1.jpg" alt="Solar Install"></div>
-        <div class="photo-item"><img src="install_2.jpg" alt="Solar Panels Stockton"></div>
-        <div class="photo-item"><img src="install_3.jpg" alt="Happy Customer"></div>
-    </div>
-</section>
-
     
-
-<section class="reviews">
-    <div style="max-width: 1000px; margin: 0 auto;">
-        <h2 style="margin-bottom: 40px; text-align: center;">Verified Client Testimonials</h2>
-        
-        <div class="review-card">
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p>"Jon is the only rep I trust. He didn't just give us a pitch; he gave us an education. Our PGE bill has practically vanished and the installation was professional from start to finish."</p>
-            <p><strong>— Michael R., Morada</strong></p>
-            <img src="review_photo_1.jpg" alt="Review 1" style="width: 100%; height: 200px; object-fit: cover; margin-top: 20px; border-radius: 8px;">
-        </div>
-
-        <div class="review-card">
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p>"Outstanding communication. If you're looking for someone who actually answers their phone and knows the Stockton area, Jon is your guy."</p>
-            <p><strong>— Sarah T., Stockton</strong></p>
-            <img src="review_photo_2.jpg" alt="Review 2" style="width: 100%; height: 200px; object-fit: cover; margin-top: 20px; border-radius: 8px;">
-        </div>
-
-        <div class="review-card">
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <p>"Jon has been amazing from start to finish. He has treated me like a friend through the entire process, he handle everything quickly. He takes pride in his work and that's rare these days. Thank you Jon!!"</p>
-            <p><strong>— Kristie D., Stockton</strong></p>
-            <img src="review_photo_2.jpg" alt="Review 2" style="width: 100%; height: 200px; object-fit: cover; margin-top: 20px; border-radius: 8px;">
-        </div>
-
-        <div style="text-align: center;">
-            <a href="https://tinyurl.com/SolarByJonReviews" target="_blank" class="g-link">View All Five-Star Reviews on Google <i class="fas fa-external-link-alt ms-2"></i></a>
-        </div>
+    <div class="photo-grid">
+        <div class="photo-item"><img src="install_1.jpg" alt="Solar Install 1"></div>
+        <div class="photo-item"><img src="install_2.jpg" alt="Solar Install 2"></div>
+        <div class="photo-item"><img src="install_3.jpg" alt="Solar Install 3"></div>
     </div>
 </section>
 
 <section>
+    <h2>Verified Client Success</h2>
+    <div class="review-grid">
+        <div class="review-card">
+            <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+            <p>"Jon is the only rep I trust. He didn't just give us a pitch; he gave us an education. Our PGE bill has practically vanished."</p>
+            <p style="margin-top:10px; font-weight:800; font-size:0.8rem;">— Michael R.</p>
+            <img src="review_photo_1.jpg" class="review-img" alt="Review 1">
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+            <p>"Outstanding communication. If you're looking for someone who actually answers their phone, Jon is your guy."</p>
+            <p style="margin-top:10px; font-weight:800; font-size:0.8rem;">— Sarah T.</p>
+            <img src="review_photo_2.jpg" class="review-img" alt="Review 2">
+        </div>
+        <div class="review-card">
+            <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+            <p>"Jon treated me like a friend through the entire process. He handles everything quickly and takes pride in his work."</p>
+            <p style="margin-top:10px; font-weight:800; font-size:0.8rem;">— Kristie D.</p>
+            <img src="review_photo_3.jpg" class="review-img" alt="Review 3">
+        </div>
+    </div>
+    <a href="https://tinyurl.com/SolarByJonReviews" target="_blank" class="g-link">View All Five-Star Reviews on Google <i class="fa fa-external-link-alt ms-1"></i></a>
+</section>
+
+<section style="background: var(--card-bg);">
     <div class="form-container">
-        <h2 style="margin-bottom: 10px;">Connect With Jon</h2>
-        <p style="text-align:center; color: var(--muted); margin-bottom: 40px;">Professional Sustainability Audit & Energy Assessment</p>
+        <h2>Professional Consultation</h2>
+        <p style="text-align:center; color: var(--muted); margin-bottom: 40px;">Detailed Sustainability Audit & Energy Assessment</p>
         
         <form action="https://formspree.io/f/jhunger4d@gmail.com" method="POST">
-            <input type="hidden" id="referrer_field" name="Origin_Referrer" value="">
+            <!-- HIDDEN TRACKING REFERRER (From URL) -->
+            <input type="hidden" id="tracking_origin" name="Tracking_Source_QR" value="Direct Visit">
             
             <div class="form-group">
                 <label>Full Name *</label>
-                <input type="text" name="Client_Name" required placeholder="John Smith">
+                <input type="text" name="Client_Name" required placeholder="Full Name">
             </div>
             
-            <div class="form-group">
-                <label>Phone Number *</label>
-                <input type="tel" name="Client_Phone" required placeholder="(555) 000-0000">
+            <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div>
+                    <label>Phone Number *</label>
+                    <input type="tel" name="Client_Phone" required placeholder="(555) 000-0000">
+                </div>
+                <div>
+                    <label>Email (Optional)</label>
+                    <input type="email" name="Client_Email" placeholder="email@address.com">
+                </div>
             </div>
 
             <div class="form-group">
                 <label>Best Time to Contact</label>
                 <div class="time-options">
-                    <div class="time-btn"><input type="radio" name="Contact_Time" id="morn" value="Morning"><label for="morn">Morning</label></div>
-                    <div class="time-btn"><input type="radio" name="Contact_Time" id="aft" value="Afternoon" checked><label for="aft">Afternoon</label></div>
-                    <div class="time-btn"><input type="radio" name="Contact_Time" id="eve" value="Evening"><label for="eve">Evening</label></div>
-                </div>
-            </div>
-
-            <div id="referral_section">
-                <!-- Referrals will be injected here -->
-            </div>
-            
-            <button type="button" class="btn btn-outline" onclick="addReferral()"><i class="fa fa-plus me-2"></i> Add a Referral?</button>
-
-            <button type="submit" class="btn btn-primary">SUBMIT REQUEST</button>
-        </form>
-    </div>
-</section>
-
-<div id="vcardModal">
-    <div class="modal-box">
-        <i class="fa fa-id-card" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;"></i>
-        <h3>Save Jon's Contact</h3>
-        <p style="color: var(--muted); margin-bottom: 25px;">Keep Jon's direct line and email saved for quick access.</p>
-        <button onclick="downloadVCard()" class="btn btn-primary">DOWNLOAD CONTACT</button>
-        <button onclick="closeModal()" style="margin-top:15px; background:none; border:none; color:var(--muted); cursor:pointer;">Not now</button>
-    </div>
-</div>
-
-<script>
-    // Referrer URL Parsing
-    const params = new URLSearchParams(window.location.search);
-    if(params.get('referrer')) { document.getElementById('referrer_field').value = params.get('referrer'); }
-
-    // Automatic VCard Prompt
-    window.onload = () => { setTimeout(() => { document.getElementById('vcardModal').style.display = 'flex'; }, 2500); };
-    function closeModal() { document.getElementById('vcardModal').style.display = 'none'; }
-
-    // Dynamic Referral Logic
-    let refCount = 0;
-    function addReferral() {
-        refCount++;
-        const div = document.createElement('div');
-        div.className = 'referral-block';
-        div.id = `ref_${refCount}`;
-        div.innerHTML = `
-            <label>Referral #${refCount} Name</label>
-            <input type="text" name="Referral_${refCount}_Name" placeholder="Friend or Neighbor Name">
-            <span class="remove-ref" onclick="removeReferral(${refCount})">Remove this referral</span>
-        `;
-        document.getElementById('referral_section').appendChild(div);
-    }
-    function removeReferral(id) {
-        const el = document.getElementById(`ref_${id}`);
-        el.remove();
-    }
-
-    // Advanced VCard Download
-    function downloadVCard() {
-        const profilePhotoUrl = window.location.origin + "/profile.jpg"; // Assuming hosted on root
-        const vcard = [
-            'BEGIN:VCARD',
-            'VERSION:3.0',
-            'FN:Jon Hungerford',
-            'ORG:Sunrun',
-            'TITLE:Energy Expert',
-            'TEL;TYPE=CELL,VOICE:(209) 639-4845',
-            'EMAIL;TYPE=PREF,INTERNET:Jon.Hungerford@Sunrun.com',
-            'URL:https://tinyurl.com/SolarByJonReviews',
-            'PHOTO;VALUE=URI:' + profilePhotoUrl,
-            'NOTE:Your local energy expert with 10+ years of experience. I help families ditch the unreliable grid by producing and storing their own power on site. See if your home can also qualify for the CalReady Power Plant. ',
-            'END:VCARD'
-        ].join('\n');
-
-        const blob = new Blob([vcard], { type: 'text/vcard' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'Jon_Hungerford_Sunrun.vcf';
-        a.click();
-        closeModal();
-    }
-</script>
-
-</body>
-</html>
+                    <div class="time-btn"><input type="radio" name="Contact_Pref" id="m" value="Morning"><label for="m">Morning</label></div>
+                    <div class="time-btn"><input type="radio" name="Contact_Pref" id="a" value="Afternoon" checked><label for="a">Afternoon</label></div>
+                    <div class="time-btn"><input type="radio" name="Contact_Pref" id="e" value="Evening"><label fo

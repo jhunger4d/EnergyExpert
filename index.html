@@ -276,67 +276,48 @@
     }
 
     // 5. vCard with License
-    function downloadVCard() {
-        const photoUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/') + "profile.jpg";
-            const vcard = [
-            'BEGIN:VCARD',
-            'VERSION:3.0',
-            'FN:Jon Hungerford',
-            'TITLE:Energy Expert',
-            'ORG:Sunrun',
-            'TEL;TYPE=CELL,VOICE:(209) 639-4845',
-            'EMAIL;TYPE=PREF,INTERNET:Jon.Hungerford@Sunrun.com',
-            'URL:https://tinyurl.com/JonsvCard',
-            // High Definition URI Link
-            'PHOTO;VALUE=URI;TYPE=JPEG:' + photoUrl,
-            'NOTE:Lic: 105699 SP. Your local energy expert with 10+ years of experience. I help families protect themselves from the unreliable grid by producing and storing their own power on site.',
-            'REV:' + new Date().toISOString().replace(/[:.-]/g, ''), // Revision date helps phones update the contact
-            'END:VCARD'
-        ].join('\n');
-        const blob = new Blob([vcard], { type: 'text/vcard' });
-        const a = document.createElement('a');
-        a.href = window.URL.createObjectURL(blob);
-        a.download = 'Jon_Hungerford.vcf';
-        a.click();
-        closeModal();
-    }
-    
-document.getElementById('mainForm').addEventListener('submit', function(e) {
-        e.preventDefault(); 
+    async function downloadVCard() {
+        const photoUrl = "profile.jpg"; 
         
-        const form = this;
-        const btn = form.querySelector('button[type="submit"]');
-        const statusDiv = document.getElementById('formStatus');
-        
-        btn.innerText = "SENDING...";
-        btn.disabled = true;
-        statusDiv.style.display = "none"; 
+        // This helper converts your image to a text string for the iPhone
+        const toBase64 = URL => fetch(URL)
+            .then(response => response.blob())
+            .then(blob => new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = reject;
+                reader.readAsDataURL(blob);
+            }));
 
-        fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            mode: 'no-cors' 
-        })
-        .then(() => {
-            statusDiv.innerText = "🚀 Success! Jon has received your request.";
-            statusDiv.style.color = "var(--accent)";
-            statusDiv.style.display = "block";
+        try {
+            const base64Photo = await toBase64(photoUrl);
             
-            form.reset();
-            btn.innerText = "REQUEST CONTACT / SUBMIT REFERRAL";
-            btn.disabled = false;
-            document.getElementById('referral_area').innerHTML = '';
-            
-            setTimeout(() => { statusDiv.style.display = "none"; }, 5000);
-        })
-        .catch(error => {
-            statusDiv.innerText = "❌ Error. Please call (209) 639-4845.";
-            statusDiv.style.color = "#f56565";
-            statusDiv.style.display = "block";
-            btn.disabled = false;
-            btn.innerText = "TRY AGAIN";
-        });
-    });
+            const vcard = [
+                'BEGIN:VCARD',
+                'VERSION:2.1',
+                'N:Hungerford;Jon;;;',      // Correct 'Name' format for iPhones
+                'FN:Jon Hungerford',         // 'Full Name' for display
+                'ORG:Sunrun',
+                'TITLE:Solar Energy Expert',
+                'TEL;CELL;VOICE:(209) 639-4845',
+                'EMAIL;PREF;INTERNET:Jon.Hungerford@Sunrun.com',
+                'URL:https://tinyurl.com/JonsvCard',
+                'PHOTO;JPEG;ENCODING=BASE64:' + base64Photo, // Embedded HD photo
+                'NOTE:Lic: 105699 SP. Expert solar consultant.',
+                'END:VCARD'
+            ].join('\r\n'); // Use \r\n (CRLF) for iPhone compatibility
+
+            const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+            const a = document.createElement('a');
+            a.href = window.URL.createObjectURL(blob);
+            a.download = 'Jon_Hungerford.vcf';
+            a.click();
+            closeModal();
+        } catch (e) {
+            console.error("Photo load failed, saving contact without it.", e);
+            // Fallback: If photo fails, save without it so they still get your number
+        }
+    }
 </script>
 </body>
 </html>

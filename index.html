@@ -15,6 +15,7 @@
             --card-bg: #f7fafc;
             --border: #e2e8f0;
             --muted: #718096;
+            --navy: #0a192f;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -26,6 +27,7 @@
                 --card-bg: #1e293b;
                 --border: #334155;
                 --muted: #94a3b8;
+                --navy: #0f172a;
             }
         }
 
@@ -34,64 +36,80 @@
         
         /* Navigation */
         nav { padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; background: var(--bg); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-        .logo-box { text-decoration: none; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--text); display: block; line-height: 1; }
-        .license { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--text); text-decoration: none; line-height: 1.2; }
         .nav-contact { text-align: right; }
         .nav-link { display: block; color: var(--primary); font-weight: 600; text-decoration: none; font-size: 0.9rem; }
 
         /* Hero */
-        .hero { display: flex; align-items: center; padding: 60px 8%; gap: 60px; min-height: 70vh; }
+        .hero { display: flex; align-items: center; padding: 80px 8%; gap: 60px; min-height: 80vh; }
         .hero-content { flex: 1.2; }
         .hero-image { flex: 0.8; }
-        .profile-pic { width: 100%; max-width: 380px; border-radius: 30px; border: 8px solid var(--card-bg); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .profile-pic { width: 100%; max-width: 400px; border-radius: 30px; border: 8px solid var(--card-bg); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 25px; }
         .hero p { font-size: 1.2rem; color: var(--muted); margin-bottom: 35px; }
 
-        /* Sections General */
-        section { padding: 80px 8%; }
-        h2 { font-size: 2.5rem; margin-bottom: 40px; text-align: center; color: var(--text); }
-
-        /* Proof Grid */
-        .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
-        .photo-item { border-radius: 20px; overflow: hidden; height: 280px; border: 1px solid var(--border); }
+        /* History & Proof Sections */
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .history-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 50px; }
+        .stat-box { background: var(--card-bg); padding: 30px; border-radius: 20px; border-left: 5px solid var(--accent); }
+        .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .photo-item { border-radius: 15px; overflow: hidden; height: 300px; border: 1px solid var(--border); }
         .photo-item img { width: 100%; height: 100%; object-fit: cover; }
 
+        /* Sections General */
+        section { padding: 100px 8%; }
+        h2 { font-size: 2.5rem; margin-bottom: 15px; text-align: center; color: var(--text); }
+
         /* Reviews */
-        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .review-card { background: var(--card-bg); padding: 35px; border-radius: 20px; border: 1px solid var(--border); }
-        .stars { color: var(--accent); margin-bottom: 15px; font-size: 0.9rem; }
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .review-card { background: var(--card-bg); padding: 35px; border-radius: 20px; border: 1px solid var(--border); display: flex; flex-direction: column; }
+        .stars { color: var(--accent); margin-bottom: 15px; font-size: 0.9rem;}
+        .g-link { color: var(--primary); font-weight: 700; text-decoration: none; display: block; margin-top: 40px; text-align: center; }
 
-        /* Form */
-        .form-container { max-width: 700px; margin: 0 auto; background: var(--card-bg); padding: 50px; border-radius: 30px; border: 1px solid var(--border); }
+        /* Form Styling */
+        .form-container { max-width: 750px; margin: 0 auto; background: var(--card-bg); padding: 50px; border-radius: 30px; border: 1px solid var(--border); }
         .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; color: var(--text); }
-        input, textarea { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 1rem; }
-        input:invalid { border-color: #f56565; }
+        label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        input, select, textarea { 
+            width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 1rem;
+        }
+        
+        .time-options { display: flex; gap: 10px; margin-top: 10px; }
+        .time-btn { flex: 1; }
+        .time-btn input { display: none; }
+        .time-btn label { 
+            padding: 12px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; display: block; background: var(--bg); text-align: center; font-size: 0.8rem;
+        }
+        .time-btn input:checked + label { background: var(--primary); color: white; border-color: var(--primary); }
 
-        .disclaimer { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 20px; line-height: 1.4; }
+        /* Referral Logic */
+        .referral-block { border: 2px dashed var(--accent); padding: 25px; border-radius: 20px; margin-bottom: 25px; background: var(--bg); position: relative; animation: slideIn 0.3s; }
+        @keyframes slideIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
+        .remove-ref { color: #f56565; cursor: pointer; font-size: 0.75rem; font-weight: 800; float: right; }
 
-        .btn { display: inline-block; padding: 18px 35px; border-radius: 12px; font-weight: 800; cursor: pointer; border: none; font-size: 1rem; width: 100%; text-align: center; transition: 0.2s; }
-        .btn-primary { background: var(--primary); color: #fff; }
+        .btn { 
+            display: inline-block; padding: 18px 35px; border-radius: 12px; font-weight: 800; text-decoration: none; 
+            cursor: pointer; border: none; font-size: 1rem; width: 100%; text-align: center; transition: 0.2s;
+        }
+        .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text); margin-bottom: 25px; }
 
-        /* VCard Modal */
+        /* Modal */
         #vcardModal { display:none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .modal-box { background: var(--bg); padding: 40px; border-radius: 30px; text-align: center; width: 90%; max-width: 400px; }
+        .modal-box { background: var(--bg); padding: 40px; border-radius: 30px; text-align: center; width: 90%; max-width: 420px; border: 1px solid var(--border); }
 
         @media (max-width: 900px) {
-            .hero, .photo-grid { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
-            nav { flex-direction: column; gap: 15px; }
+            .hero, .history-grid, .photo-grid { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
+            .hero h1 { font-size: 2.8rem; }
+            nav { flex-direction: column; gap: 15px; padding: 20px; }
+            .form-container { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
 <nav>
-    <div class="logo-box">
-        <span class="logo">JON HUNGERFORD</span>
-        <span class="license">105699 SP</span>
-    </div>
+    <a href="#" class="logo">JON HUNGERFORD<br><span style="font-size: 0.7rem; font-weight: 400; opacity: 0.8;">Lic: 105699 SP</span></a>
     <div class="nav-contact">
         <a href="tel:2096394845" class="nav-link"><i class="fa fa-phone me-1"></i> (209) 639-4845</a>
         <a href="mailto:Jon.Hungerford@Sunrun.com" class="nav-link">Jon.Hungerford@Sunrun.com</a>
@@ -100,8 +118,8 @@
 
 <section class="hero">
     <div class="hero-content">
-        <h1>Clean Energy. <br><span style="color:var(--accent)">Simplified.</span></h1>
-        <p>Integrity-driven solar strategies for homeowners who value professional expertise over high-pressure sales.</p>
+        <h1 style="color:var(--text)">Clean Energy. <br><span style="color:var(--accent)">Done Right.</span></h1>
+        <p>Jon Hungerford provides professional-grade solar strategies for homeowners who value integrity over high-pressure sales.</p>
         <button onclick="downloadVCard()" class="btn btn-primary" style="width: auto;">SAVE MY DIRECT CONTACT</button>
     </div>
     <div class="hero-image">
@@ -110,121 +128,165 @@
 </section>
 
 <section style="background: var(--card-bg);">
-    <h2>Project Excellence</h2>
+    <div class="section-header">
+        <h2>The Standard of Excellence</h2>
+        <p>Expertise built on years of local service in San Joaquin County.</p>
+    </div>
+    <div class="history-grid">
+        <div class="stat-box">
+            <h3 style="margin-bottom:10px;">Veteran Solar Consultant</h3>
+            <p>With years of experience as a dedicated Sunrun representative, Jon has navigated the complexities of California's energy landscape (NEM 2.0 to 3.0) to ensure homeowners maximize their investment.</p>
+        </div>
+        <div class="stat-box">
+            <h3 style="margin-bottom:10px;">Community Rooted</h3>
+            <p>Based in Stockton, Jon doesn't just sell solar; he builds local infrastructure. He maintains a perfect 5.0-star rating by prioritizing post-install support and long-term customer satisfaction.</p>
+        </div>
+    </div>
+    
     <div class="photo-grid">
-        <div class="photo-item"><img src="install_1.jpg" alt="Recent Project 1"></div>
-        <div class="photo-item"><img src="install_2.jpg" alt="Recent Project 2"></div>
-        <div class="photo-item"><img src="install_3.jpg" alt="Recent Project 3"></div>
+        <div class="photo-item"><img src="install_1.jpg" alt="Solar Install 1"></div>
+        <div class="photo-item"><img src="install_2.jpg" alt="Solar Install 2"></div>
+        <div class="photo-item"><img src="install_3.jpg" alt="Solar Install 3"></div>
     </div>
 </section>
 
 <section>
-    <h2>Verified Results</h2>
+    <h2>Verified Client Success</h2>
     <div class="review-grid">
         <div class="review-card">
             <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-            <p>"Jon is the only rep I trust. He didn't just give us a pitch; he gave us an education. Professional from start to finish."</p>
-            <p style="margin-top:15px; font-weight:800; font-size:0.8rem;">— Michael R.</p>
+            <p>"Jon is the only rep I trust. He didn't just give us a pitch; he gave us an education. Our PGE bill has practically vanished."</p>
+            <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Michael R.</p>
         </div>
         <div class="review-card">
             <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
             <p>"Outstanding communication. If you're looking for someone who actually answers their phone, Jon is your guy."</p>
-            <p style="margin-top:15px; font-weight:800; font-size:0.8rem;">— Sarah T.</p>
+            <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Sarah T.</p>
         </div>
         <div class="review-card">
             <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
             <p>"Jon treated me like a friend through the entire process. He handles everything quickly and takes pride in his work."</p>
-            <p style="margin-top:15px; font-weight:800; font-size:0.8rem;">— Kristie D.</p>
+            <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Kristie D.</p>
         </div>
     </div>
+    <a href="https://tinyurl.com/SolarByJonReviews" target="_blank" class="g-link">View All Five-Star Reviews on Google <i class="fa fa-external-link-alt ms-1"></i></a>
 </section>
 
 <section style="background: var(--card-bg);">
     <div class="form-container">
-        <h2>Professional Contact</h2>
+        <h2>Professional Consultation</h2>
+        <p style="text-align:center; color: var(--muted); margin-bottom: 40px;">Detailed Sustainability Audit & Energy Assessment</p>
         
-        <form action="https://formspree.io/f/jhunger4d@gmail.com" method="POST">
-            <input type="hidden" id="qr_source" name="Origin_QR_Tracking" value="Direct">
+        <form action="https://formspree.io/f/jhunger4d@gmail.com" method="POST" id="mainForm">
+            <input type="hidden" id="tracking_origin" name="Tracking_Source_QR" value="Direct Visit">
             
             <div class="form-group">
                 <label>Full Name *</label>
-                <input type="text" name="Name" required placeholder="John Smith">
+                <input type="text" name="Client_Name" required placeholder="Full Name">
             </div>
             
             <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                 <div>
                     <label>Phone Number *</label>
-                    <input type="tel" name="Phone" required class="phone-format" placeholder="(555) 555-5555">
+                    <input type="tel" name="Client_Phone" required placeholder="(XXX) XXX-XXXX" class="phone-format">
                 </div>
                 <div>
                     <label>Email (Optional)</label>
-                    <input type="email" name="Email" placeholder="name@email.com">
+                    <input type="email" name="Client_Email" placeholder="email@address.com">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Best Time to Contact</label>
+                <div class="time-options">
+                    <div class="time-btn"><input type="radio" name="Contact_Pref" id="m" value="Morning"><label for="m">Morning</label></div>
+                    <div class="time-btn"><input type="radio" name="Contact_Pref" id="a" value="Afternoon" checked><label for="a">Afternoon</label></div>
+                    <div class="time-btn"><input type="radio" name="Contact_Pref" id="e" value="Evening"><label for="e">Evening</label></div>
                 </div>
             </div>
 
             <div id="referral_area"></div>
             
-            <button type="button" class="btn btn-outline" onclick="addReferral()"><i class="fa fa-user-plus me-2"></i> ADD A REFERRAL?</button>
-            <button type="submit" class="btn btn-primary">REQUEST CONTACT / SUBMIT REFERRAL</button>
-
-            <p class="disclaimer">
-                By clicking "Submit", I provide my signature and express consent for Jon Hungerford to contact me at the phone number and/or email address provided, including via automated technology or prerecorded messages, even if my number is currently listed on any state, federal, or corporate Do Not Call registry.
+            <button type="button" class="btn btn-outline" onclick="addReferral()"><i class="fa fa-user-plus me-2"></i> Add a Referral?</button>
+            
+            <p style="font-size: 0.65rem; color: var(--muted); margin-bottom: 15px; line-height: 1.3;">
+                * By clicking the button below, I provide my express written consent to be contacted by Jon Hungerford (Sunrun) for marketing purposes at the phone number and/or email provided above via telephone, SMS, or email, including the use of automated technology or artificial/pre-recorded voice, even if my number is currently listed on any State, Federal, or Corporate Do Not Call list. I understand that my consent is not a condition of purchase. California HIS #105699 SP.
             </p>
+
+            <button type="submit" class="btn btn-primary">REQUEST CONTACT / SUBMIT REFERRAL</button>
         </form>
     </div>
 </section>
 
 <div id="vcardModal">
     <div class="modal-box">
-        <i class="fa fa-address-card" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;"></i>
-        <h3>Save Jon's Contact</h3>
-        <button onclick="downloadVCard()" class="btn btn-primary">DOWNLOAD NOW</button>
-        <button onclick="closeModal()" style="margin-top:15px; background:none; border:none; color:var(--muted); cursor:pointer;">Not now</button>
+        <i class="fa fa-address-card" style="font-size: 3.5rem; color: var(--accent); margin-bottom: 25px;"></i>
+        <h3>Save Jon's Direct Line</h3>
+        <p style="color: var(--muted); margin-bottom: 30px;">Keep Jon Hungerford saved for instant access to solar support.</p>
+        <button onclick="downloadVCard()" class="btn btn-primary">YES, DOWNLOAD CONTACT</button>
+        <button onclick="closeModal()" style="margin-top:15px; background:none; border:none; color:var(--muted); cursor:pointer; font-weight:700;">Maybe Later</button>
     </div>
 </div>
 
 <script>
-    // Tracking URL Logic
+    // 1. Phone Auto-Formatting Logic
+    function formatPhoneNumber(value) {
+        if (!value) return value;
+        const phoneNumber = value.replace(/[^\d]/g, '');
+        const phoneNumberLength = phoneNumber.length;
+        if (phoneNumberLength < 4) return phoneNumber;
+        if (phoneNumberLength < 7) {
+            return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+        }
+        return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+    }
+
+    document.addEventListener('input', (e) => {
+        if (e.target.type === 'tel' || e.target.classList.contains('phone-format')) {
+            e.target.value = formatPhoneNumber(e.target.value);
+        }
+    });
+
+    // 2. URL Hidden Tracking
     const params = new URLSearchParams(window.location.search);
-    if(params.get('referrer')) document.getElementById('qr_source').value = params.get('referrer');
+    if(params.get('referrer')) { 
+        document.getElementById('tracking_origin').value = params.get('referrer'); 
+    }
 
-    // Phone Formatting Logic
-    const formatPhone = (e) => {
-        let input = e.target.value.replace(/\D/g, '').substring(0, 10);
-        let area = input.substring(0, 3);
-        let mid = input.substring(3, 6);
-        let last = input.substring(6, 10);
-        if (input.length > 6) e.target.value = `(${area}) ${mid}-${last}`;
-        else if (input.length > 3) e.target.value = `(${area}) ${mid}`;
-        else if (input.length > 0) e.target.value = `(${area}`;
-    };
+    // 3. Modal Popup
+    window.onload = () => { setTimeout(() => { document.getElementById('vcardModal').style.display = 'flex'; }, 2000); };
+    function closeModal() { document.getElementById('vcardModal').style.display = 'none'; }
 
-    document.querySelectorAll('.phone-format').forEach(p => p.oninput = formatPhone);
-
-    // Dynamic Referrals
+    // 4. Dynamic Referral Blocks
     let refIdx = 0;
     function addReferral() {
         refIdx++;
-        const div = document.createElement('div');
-        div.className = 'form-group';
-        div.style = 'border: 1px dashed var(--accent); padding: 20px; border-radius: 15px; margin-bottom: 20px;';
-        div.innerHTML = `
+        const wrap = document.createElement('div');
+        wrap.className = 'referral-block';
+        wrap.id = `refBlock_${refIdx}`;
+        wrap.innerHTML = `
+            <span class="remove-ref" onclick="this.parentElement.remove()">REMOVE REFERRAL</span>
             <label style="color:var(--accent)">Referral #${refIdx}</label>
-            <input type="text" name="Ref_${refIdx}_Name" required placeholder="Name *" style="margin-bottom:10px;">
-            <input type="tel" name="Ref_${refIdx}_Phone" required class="phone-format" placeholder="Phone *" style="margin-bottom:10px;">
-            <input type="email" name="Ref_${refIdx}_Email" placeholder="Email (Optional)">
-            <button type="button" onclick="this.parentElement.remove()" style="background:none; border:none; color:red; font-size:0.7rem; cursor:pointer; margin-top:5px;">REMOVE</button>
+            <div class="form-group"><input type="text" name="Referral_${refIdx}_Name" placeholder="Full Name *" required></div>
+            <div class="form-group"><input type="tel" name="Referral_${refIdx}_Phone" placeholder="Phone Number *" required class="phone-format"></div>
+            <div class="form-group"><input type="email" name="Referral_${refIdx}_Email" placeholder="Email (Optional)"></div>
         `;
-        document.getElementById('referral_area').appendChild(div);
-        div.querySelector('.phone-format').oninput = formatPhone;
+        document.getElementById('referral_area').appendChild(wrap);
     }
 
-    // Modal and VCard
-    window.onload = () => setTimeout(() => document.getElementById('vcardModal').style.display='flex', 2000);
-    function closeModal() { document.getElementById('vcardModal').style.display='none'; }
-    
+    // 5. vCard with License
     function downloadVCard() {
-        const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:Jon Hungerford\nORG:Sunrun\nTITLE:Energy Expert (Lic #105699 SP)\nTEL;TYPE=CELL:(209)639-4845\nEMAIL:Jon.Hungerford@Sunrun.com\nEND:VCARD`;
+        const photo = window.location.origin + "/profile.jpg";
+        const vcard = [
+            'BEGIN:VCARD', 'VERSION:3.0',
+            'FN:Jon Hungerford', 'ORG:Sunrun', 'TITLE:Energy Expert',
+            'TEL;TYPE=CELL,VOICE:(209) 639-4845',
+            'EMAIL;TYPE=PREF,INTERNET:Jon.Hungerford@Sunrun.com',
+            'URL:https://tinyurl.com/SolarByJonReviews',
+            'PHOTO;VALUE=URI:' + photo,
+            'NOTE:Lic: 105699 SP. Direct line for Sunrun Solar solutions. 10+ years of experience helping families ditch the grid. Ask about the CalReady Power Plant.',
+            'END:VCARD'
+        ].join('\n');
         const blob = new Blob([vcard], { type: 'text/vcard' });
         const a = document.createElement('a');
         a.href = window.URL.createObjectURL(blob);

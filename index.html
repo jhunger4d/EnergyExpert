@@ -155,13 +155,13 @@
     <div class="review-grid">
         <div class="review-card">
             <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-            <p>"Jon is the only rep I trust. He didn't just give us a pitch; he gave us an education. Our PGE bill has practically vanished."</p>
-            <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Michael R.</p>
+            <p>"Jon is very knowledgeable as well as personable.  He is always looking out for your best interest."</p>
+            <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Kathryn D.</p>
         </div>
         <div class="review-card">
             <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-            <p>"Outstanding communication. If you're looking for someone who actually answers their phone, Jon is your guy."</p>
-            <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Sarah T.</p>
+            <p>"Jon has been great even years after solar install. Truly committed to customer satisfaction. Any question you have, he will be able to get you the answer. No regrets."</p>
+            <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Javier C.</p>
         </div>
         <div class="review-card">
             <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
@@ -169,7 +169,7 @@
             <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Kristie D.</p>
         </div>
     </div>
-    <a href="https://tinyurl.com/SolarByJonReviews" target="_blank" class="g-link">View All Five-Star Reviews on Google <i class="fa fa-external-link-alt ms-1"></i></a>
+    <a href="https://tinyurl.com/SolarByJonReviews" target="_blank" class="g-link">See all my 5 <div class="stars"><i class="fa fa-star"></i></div> Reviews on Google <i class="fa fa-external-link-alt ms-1"></i></a>
 </section>
 
 <section style="background: var(--card-bg);">
@@ -279,7 +279,6 @@
     async function downloadVCard() {
         const photoUrl = "vCardphoto.jpg"; 
         
-        // This helper converts your image to a text string for the iPhone
         const toBase64 = URL => fetch(URL)
             .then(response => response.blob())
             .then(blob => new Promise((resolve, reject) => {
@@ -297,13 +296,14 @@
                 'VERSION:2.1',
                 'N:Hungerford;Jon;;;',      // Correct 'Name' format for iPhones
                 'FN:Jon Hungerford',         // 'Full Name' for display
-                'ORG:Sunrun',
-                'TITLE:Solar Energy Expert',
+                'ORG:Sunrun - Lic#105699 SP',
+                'TITLE:Energy Expert',
                 'TEL;CELL;VOICE:(209) 639-4845',
                 'EMAIL;PREF;INTERNET:Jon.Hungerford@Sunrun.com',
                 'URL:https://tinyurl.com/JonsvCard',
+                'URL:https://tinyurl.com/SolarByJonReviews',
                 'PHOTO;JPEG;ENCODING=BASE64:' + base64Photo, // Embedded HD photo
-                'NOTE:Lic: 105699 SP. Expert solar consultant.',
+                'NOTE: Your local energy expert with 10+ years of experience. ',
                 'END:VCARD'
             ].join('\r\n'); // Use \r\n (CRLF) for iPhone compatibility
 
@@ -315,7 +315,6 @@
             closeModal();
         } catch (e) {
             console.error("Photo load failed, saving contact without it.", e);
-            // Fallback: If photo fails, save without it so they still get your number
         }
     }
 </script>

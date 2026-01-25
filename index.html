@@ -213,6 +213,7 @@
                 * By clicking the button below, I provide my express written consent to be contacted by Jon Hungerford for marketing purposes at the phone number and/or email provided above via telephone, SMS, or email, including the use of automated technology or artificial/pre-recorded voice, even if my number is currently listed on any State, Federal, or Corporate Do Not Call list. I understand that my consent is not a condition of purchase. California HIS #105699 SP.
             </p>
 
+            <div id="formStatus" style="text-align:center; margin-bottom:10px; font-weight:bold; display:none;"></div>
             <button type="submit" class="btn btn-primary">REQUEST CONTACT / SUBMIT REFERRAL</button>
         </form>
     </div>
@@ -294,14 +295,16 @@
         a.click();
         closeModal();
     }
-    document.getElementById('mainForm').addEventListener('submit', function(e) {
+document.getElementById('mainForm').addEventListener('submit', function(e) {
         e.preventDefault(); 
         
         const form = this;
         const btn = form.querySelector('button[type="submit"]');
-        const originalBtnText = btn.innerText;
+        const statusDiv = document.getElementById('formStatus');
+        
         btn.innerText = "SENDING...";
         btn.disabled = true;
+        statusDiv.style.display = "none"; 
 
         fetch(form.action, {
             method: 'POST',
@@ -309,16 +312,23 @@
             mode: 'no-cors' 
         })
         .then(() => {
-            alert("Success! Jon has received your request.");
+            statusDiv.innerText = "🚀 Success! Jon has received your request.";
+            statusDiv.style.color = "var(--accent)";
+            statusDiv.style.display = "block";
+            
             form.reset();
-            btn.innerText = originalBtnText;
+            btn.innerText = "REQUEST CONTACT / SUBMIT REFERRAL";
             btn.disabled = false;
             document.getElementById('referral_area').innerHTML = '';
+            
+            setTimeout(() => { statusDiv.style.display = "none"; }, 5000);
         })
         .catch(error => {
-            alert("Error sending. Please call Jon at (209) 639-4845.");
+            statusDiv.innerText = "❌ Error. Please call (209) 639-4845.";
+            statusDiv.style.color = "#f56565";
+            statusDiv.style.display = "block";
             btn.disabled = false;
-            btn.innerText = originalBtnText;
+            btn.innerText = "TRY AGAIN";
         });
     });
 </script>

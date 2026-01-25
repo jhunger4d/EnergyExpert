@@ -206,4 +206,76 @@
                 <div class="time-options">
                     <div class="time-btn"><input type="radio" name="Contact_Pref" id="m" value="Morning"><label for="m">Morning</label></div>
                     <div class="time-btn"><input type="radio" name="Contact_Pref" id="a" value="Afternoon" checked><label for="a">Afternoon</label></div>
-                    <div class="time-btn"><input type="radio" name="Contact_Pref" id="e" value="Evening"><label fo
+                    <div class="time-btn"><input type="radio" name="Contact_Pref" id="e" value="Evening"><label for="e">Evening</label></div>
+                </div>
+            </div>
+
+            <div id="referral_area"></div>
+            
+            <button type="button" class="btn btn-outline" onclick="addReferral()"><i class="fa fa-user-plus me-2"></i> Add a Referral?</button>
+            <button type="submit" class="btn btn-primary">REQUEST ASSESSMENT</button>
+        </form>
+    </div>
+</section>
+
+<div id="vcardModal">
+    <div class="modal-box">
+        <i class="fa fa-address-card" style="font-size: 3.5rem; color: var(--accent); margin-bottom: 25px;"></i>
+        <h3>Save Jon's Direct Line</h3>
+        <p style="color: var(--muted); margin-bottom: 30px;">Keep Jon Hungerford saved for instant access to solar support.</p>
+        <button onclick="downloadVCard()" class="btn btn-primary">YES, DOWNLOAD CONTACT</button>
+        <button onclick="closeModal()" style="margin-top:15px; background:none; border:none; color:var(--muted); cursor:pointer; font-weight:700;">Maybe Later</button>
+    </div>
+</div>
+
+<script>
+    // 1. URL Hidden Tracking Referrer logic
+    const params = new URLSearchParams(window.location.search);
+    if(params.get('referrer')) { 
+        document.getElementById('tracking_origin').value = params.get('referrer'); 
+    }
+
+    // 2. Modal Popup
+    window.onload = () => { setTimeout(() => { document.getElementById('vcardModal').style.display = 'flex'; }, 2000); };
+    function closeModal() { document.getElementById('vcardModal').style.display = 'none'; }
+
+    // 3. Dynamic Referral Blocks (With Required Fields)
+    let refIdx = 0;
+    function addReferral() {
+        refIdx++;
+        const wrap = document.createElement('div');
+        wrap.className = 'referral-block';
+        wrap.id = `refBlock_${refIdx}`;
+        wrap.innerHTML = `
+            <span class="remove-ref" onclick="this.parentElement.remove()">REMOVE REFERRAL</span>
+            <label style="color:var(--accent)">Referral #${refIdx}</label>
+            <div class="form-group"><input type="text" name="Referral_${refIdx}_Name" placeholder="Full Name *" required></div>
+            <div class="form-group"><input type="tel" name="Referral_${refIdx}_Phone" placeholder="Phone Number *" required></div>
+            <div class="form-group"><input type="email" name="Referral_${refIdx}_Email" placeholder="Email (Optional)"></div>
+        `;
+        document.getElementById('referral_area').appendChild(wrap);
+    }
+
+    // 4. Advanced vCard
+    function downloadVCard() {
+        const photo = window.location.origin + "/profile.jpg";
+        const vcard = [
+            'BEGIN:VCARD', 'VERSION:3.0',
+            'FN:Jon Hungerford', 'ORG:Sunrun', 'TITLE:Energy Expert',
+            'TEL;TYPE=CELL,VOICE:(209) 639-4845',
+            'EMAIL;TYPE=PREF,INTERNET:Jon.Hungerford@Sunrun.com',
+            'URL:https://tinyurl.com/SolarByJonReviews',
+            'PHOTO;VALUE=URI:' + photo,
+            'NOTE:Direct line for Sunrun Solar solutions. 10+ years of experience helping families ditch the grid. Ask about the CalReady Power Plant.',
+            'END:VCARD'
+        ].join('\n');
+        const blob = new Blob([vcard], { type: 'text/vcard' });
+        const a = document.createElement('a');
+        a.href = window.URL.createObjectURL(blob);
+        a.download = 'Jon_Hungerford.vcf';
+        a.click();
+        closeModal();
+    }
+</script>
+</body>
+</html>

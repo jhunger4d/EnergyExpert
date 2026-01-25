@@ -3,169 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunrun Solar By Jon - Clean Energy Expert</title>
-    <!-- Bootstrap CSS for responsive layout -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Jon Hungerford | Energy Expert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --sunrun-orange: #f47920; --sunrun-dark: #333; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--sunrun-dark); background-color: #f9f9f9; }
-        .hero { background: white; padding: 40px 20px; text-align: center; border-bottom: 5px solid var(--sunrun-orange); }
-        .profile-img { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--sunrun-orange); object-fit: cover; margin-bottom: 20px; }
-        .btn-orange { background-color: var(--sunrun-orange); color: white; font-weight: bold; padding: 12px 30px; border-radius: 50px; }
-        .btn-orange:hover { background-color: #d66518; color: white; }
-        .review-card { background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .stars { color: #ffc107; margin-bottom: 10px; }
-        .form-section { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-top: -50px; }
-        #contact-prompt { display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; }
-        .prompt-box { background: white; padding: 30px; border-radius: 15px; text-align: center; max-width: 90%; }
+        :root { --navy: #0a192f; --solar-blue: #117aca; --accent: #f47920; --light: #f8fafc; --text: #334155; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: var(--light); color: var(--text); line-height: 1.6; }
+        
+        /* Typography */
+        h1, h2, h3 { color: var(--navy); font-weight: 700; }
+        .accent-text { color: var(--solar-blue); }
+
+        /* Navigation */
+        nav { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: white; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: -1px; }
+
+        /* Hero Section */
+        .hero { display: flex; align-items: center; padding: 80px 10%; gap: 50px; background: white; }
+        .hero-content { flex: 1; }
+        .hero-image { flex: 1; text-align: right; }
+        .profile-pic { width: 350px; height: 350px; border-radius: 20px; object-fit: cover; box-shadow: 20px 20px 0px var(--solar-blue); }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; }
+        .badge { display: inline-block; padding: 5px 15px; background: #e0f2fe; color: var(--solar-blue); border-radius: 50px; font-weight: 600; font-size: 0.9rem; margin-bottom: 15px; }
+
+        /* History Section */
+        .history { padding: 100px 10%; background: var(--navy); color: white; }
+        .history h2 { color: white; margin-bottom: 30px; font-size: 2.5rem; }
+        .history-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .stat-box { padding: 30px; border-left: 4px solid var(--solar-blue); background: rgba(255,255,255,0.05); }
+
+        /* Photos & Proof Section */
+        .proof { padding: 100px 10%; background: white; text-align: center; }
+        .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 50px; }
+        .photo-item { border-radius: 12px; overflow: hidden; height: 300px; background: #eee; position: relative; }
+        .photo-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+        .photo-item:hover img { transform: scale(1.05); }
+
+        /* Review Section */
+        .reviews { padding: 80px 10%; background: var(--light); }
+        .review-card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; margin-bottom: 30px; }
+        .stars { color: #fbbf24; font-size: 1.2rem; margin-bottom: 15px; }
+        .g-link { display: inline-block; margin-top: 20px; font-weight: 600; color: var(--solar-blue); text-decoration: none; }
+
+        /* Consultation Form */
+        .contact-section { padding: 100px 10%; background: white; }
+        .form-container { max-width: 800px; margin: 0 auto; padding: 50px; border-radius: 20px; background: var(--light); border: 1px solid #e2e8f0; }
+        .input-group { margin-bottom: 25px; }
+        input, select, textarea { width: 100%; padding: 15px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 1rem; }
+        .btn-main { background: var(--solar-blue); color: white; padding: 18px 40px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.3s; width: 100%; }
+        .btn-main:hover { background: var(--navy); transform: translateY(-2px); }
+
+        /* VCard Modal */
+        #vcardModal { display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 25, 47, 0.9); z-index: 1000; align-items: center; justify-content: center; }
+        .modal-content { background: white; padding: 40px; border-radius: 20px; text-align: center; max-width: 400px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+
+        @media (max-width: 900px) {
+            .hero, .history-grid { flex-direction: column; text-align: center; }
+            .hero h1 { font-size: 2.5rem; }
+            .profile-pic { width: 100%; height: auto; margin-top: 40px; box-shadow: none; border: 5px solid var(--solar-blue); }
+            .photo-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-<!-- Auto-Download Prompt Overlay -->
-<div id="contact-prompt">
-    <div class="prompt-box">
-        <h4>Save Jon's Contact Info?</h4>
-        <p>Get instant access to Jon Hungerford's direct line for any solar questions.</p>
-        <button onclick="downloadVCard()" class="btn btn-orange mb-2">Yes, Save Contact</button><br>
-        <button onclick="closePrompt()" class="btn btn-link text-muted">Maybe Later</button>
+<nav>
+    <div class="logo">SUNRUN <span class="accent-text">BY JON</span></div>
+    <div><a href="tel:2096394845" style="text-decoration:none; color:var(--navy); font-weight:700;"><i class="fa fa-phone me-2"></i> (209) 639-4845</a></div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <span class="badge">STOCKTON & THE SURROUNDING AREA'S TOP RATED REP</span>
+        <h1>Clean Energy <br><span class="accent-text">Done Right.</span></h1>
+        <p style="font-size: 1.2rem; margin-bottom: 30px; color: #64748b;">Jon Hungerford provides professional-grade solar strategies for homeowners who value integrity over high-pressure sales.</p>
+        <button onclick="downloadVCard()" class="btn-main" style="width:auto; padding: 15px 30px;">SAVE MY CONTACT INFO</button>
+    </div>
+    <div class="hero-image">
+        <img src="profile.jpg" alt="Jon Hungerford" class="profile-pic">
+    </div>
+</section>
+
+<section class="history">
+    <h2>The Standard of Excellence</h2>
+    <div class="history-grid">
+        <div class="stat-box">
+            <h3>Veteran Energy Consultant</h3>
+            <p>With years of experience as a dedicated Sunrun representative, Jon has navigated the complexities of California's energy landscape (NEM 2.0 to 3.0) to ensure homeowners maximize their benefit.</p>
+        </div>
+        <div class="stat-box">
+            <h3>Community Rooted</h3>
+            <p>Based in Stockton, Jon doesn't just sell solar; he builds local infrastructure. He maintains a perfect 5.0-star rating by prioritizing post-install support and long-term customer satisfaction.</p>
+        </div>
+    </div>
+</section>
+
+<section class="proof">
+    <h2>Real Results in San Joaquin County</h2>
+    <p>Professional installations and happy homeowners across Morada and Stockton.</p>
+    <div class="photo-grid">
+        <div class="photo-item"><img src="install_1.jpg" alt="Solar Install"></div>
+        <div class="photo-item"><img src="install_2.jpg" alt="Solar Panels Stockton"></div>
+        <div class="photo-item"><img src="install_3.jpg" alt="Happy Customer"></div>
+    </div>
+</section>
+
+<section class="reviews">
+    <div style="max-width: 1000px; margin: 0 auto;">
+        <h2 style="margin-bottom: 40px; text-align: center;">Verified Client Testimonials</h2>
+        
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p>"Jon is the only rep I trust. He didn't just give us a pitch; he gave us an education. Our PGE bill has practically vanished and the installation was professional from start to finish."</p>
+            <p><strong>— Michael R., Morada Resident</strong></p>
+            <img src="review_photo_1.jpg" alt="Review 1" style="width: 100%; height: 200px; object-fit: cover; margin-top: 20px; border-radius: 8px;">
+        </div>
+
+        <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p>"Outstanding communication. If you're looking for someone who actually answers their phone and knows the Stockton area, Jon is your guy."</p>
+            <p><strong>— Sarah T., Stockton Homeowner</strong></p>
+            <img src="review_photo_2.jpg" alt="Review 2" style="width: 100%; height: 200px; object-fit: cover; margin-top: 20px; border-radius: 8px;">
+        </div>
+
+        <div style="text-align: center;">
+            <a href="https://www.google.com/search?q=Sunrun+Solar+By+Jon" target="_blank" class="g-link">View All 36+ Five-Star Reviews on Google <i class="fas fa-external-link-alt ms-2"></i></a>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section">
+    <div class="form-container">
+        <h2 style="text-align: center; margin-bottom: 10px;">Professional Consultation</h2>
+        <p style="text-align: center; margin-bottom: 40px; color: #64748b;">Submit your details for a detailed home sustainability audit.</p>
+        
+        <form id="solarForm">
+            <input type="hidden" id="referrer" name="referrer" value="">
+            
+            <div class="input-group">
+                <input type="text" name="name" placeholder="Full Name" required>
+            </div>
+            <div style="display: flex; gap: 20px; margin-bottom: 25px;">
+                <input type="tel" name="phone" placeholder="Phone Number" style="flex: 1;" required>
+                <input type="email" name="email" placeholder="Email Address" style="flex: 1;" required>
+            </div>
+            <div class="input-group">
+                <input type="text" name="address" placeholder="Property Address (Street, City, Zip)" required>
+            </div>
+            <div class="input-group">
+                <textarea rows="4" placeholder="Additional details or specific energy goals?"></textarea>
+            </div>
+            
+            <button type="submit" class="btn-main">REQUEST ENERGY ASSESSMENT</button>
+        </form>
+    </div>
+</section>
+
+<div id="vcardModal">
+    <div class="modal-content">
+        <i class="fas fa-address-card" style="font-size: 3rem; color: var(--solar-blue); margin-bottom: 20px;"></i>
+        <h3>Save Jon's Contact?</h3>
+        <p style="margin-bottom: 25px; color: #64748b;">Keep Jon's direct line handy for any solar or battery storage questions.</p>
+        <button onclick="downloadVCard()" class="btn-main">YES, SAVE CONTACT</button>
+        <button onclick="closeModal()" style="margin-top: 15px; background:none; border:none; color:#94a3b8; cursor:pointer;">Maybe Later</button>
     </div>
 </div>
-
-<header class="hero">
-    <img src="profile.jpg" alt="Jon Hungerford" class="profile-img">
-    <h1 class="fw-bold">Sunrun Solar By Jon</h1>
-    <p class="lead">Serving Stockton, Morada, and San Joaquin County</p>
-    <div class="stars">
-        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        <span class="ms-2 fw-bold">5.0 (36+ Reviews)</span>
-    </div>
-    <button onclick="downloadVCard()" class="btn btn-orange mt-3">
-        <i class="fas fa-user-plus me-2"></i>SAVE MY CONTACT INFO
-    </button>
-</header>
-
-<div class="container my-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="form-section">
-                <h3 class="text-center mb-4">Request a Free Quote</h3>
-                <form id="solarForm">
-                    <!-- Hidden Referrer Field -->
-                    <input type="hidden" id="referrer" name="referrer" value="">
-                    
-                    <div class="mb-3">
-                        <label class="form-label">Full Name</label>
-                        <input type="text" class="form-control" name="name" required>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col">
-                            <label class="form-label">Phone</label>
-                            <input type="tel" class="form-control" name="phone" required>
-                        </div>
-                        <div class="col">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" required>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Home Address</label>
-                        <input type="text" class="form-control" name="address" placeholder="123 Solar St, Stockton, CA">
-                    </div>
-                    <button type="submit" class="btn btn-orange w-100 py-3">SEND TO JON</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="row mt-5">
-        <div class="col-12 text-center mb-4">
-            <h2 class="fw-bold">What Your Neighbors Say</h2>
-        </div>
-        <div class="col-md-4">
-            <div class="review-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"Jon made the entire process so easy. He explained everything clearly and we are already seeing massive savings on our PGE bill!"</p>
-                <footer class="blockquote-footer">Verified Customer in Morada</footer>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="review-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"Professional, knowledgeable, and honest. Unlike other companies, Jon actually cares about what is best for the homeowner."</p>
-                <footer class="blockquote-footer">Verified Customer in Stockton</footer>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="review-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"Highly recommend! The installation was smooth and Jon was available for every question we had throughout the process."</p>
-                <footer class="blockquote-footer">Verified Customer in Lincoln Village</footer>
-            </div>
-        </div>
-    </div>
-</div>
-
-<footer class="text-center py-4 text-muted">
-    <p>&copy; 2024 Sunrun Solar By Jon | <a href="tel:2096394845" class="text-decoration-none text-muted">(209) 639-4845</a></p>
-</footer>
 
 <script>
-    // 1. Populate Hidden Referrer Section from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const referrerVal = urlParams.get('referrer');
-    if (referrerVal) {
-        document.getElementById('referrer').value = referrerVal;
-    }
+    // URL Referrer Logic
+    const params = new URLSearchParams(window.location.search);
+    if(params.get('referrer')) { document.getElementById('referrer').value = params.get('referrer'); }
 
-    // 2. Automatic Contact Download Logic
-    window.onload = function() {
-        // Show prompt after 1.5 seconds
-        setTimeout(() => {
-            document.getElementById('contact-prompt').style.display = 'flex';
-        }, 1500);
-    };
+    // Modal Trigger
+    window.onload = () => { setTimeout(() => { document.getElementById('vcardModal').style.display = 'flex'; }, 2000); };
+    function closeModal() { document.getElementById('vcardModal').style.display = 'none'; }
 
-    function closePrompt() {
-        document.getElementById('contact-prompt').style.display = 'none';
-    }
-
+    // VCard Download Logic
     function downloadVCard() {
-        const vcardData = `BEGIN:VCARD
-VERSION:3.0
-FN:Jon Hungerford (Sunrun Solar)
-ORG:Sunrun Solar
-TITLE:Solar Consultant
-TEL;TYPE=CELL,VOICE:(209) 639-4845
-URL:https://sunrun.com
-END:VCARD`;
-
-        const blob = new Blob([vcardData], { type: 'text/vcard' });
-        const file = new File([blob], "JonHungerford.vcf", { type: "text/vcard" });
-
-        // Try Web Share API for native mobile contact saving
-        if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-            navigator.share({
-                files: [file],
-                title: 'Jon Hungerford',
-                text: 'Save Jon\'s contact info to your phone.'
-            }).then(() => closePrompt()).catch(() => performManualDownload(blob));
-        } else {
-            performManualDownload(blob);
-        }
-    }
-
-    function performManualDownload(blob) {
+        const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:Jon Hungerford (Sunrun Solar)\nTEL;TYPE=CELL:(209)639-4845\nORG:Sunrun Solar\nNOTE:Top Rated Stockton Solar Expert\nEND:VCARD`;
+        const blob = new Blob([vcard], { type: 'text/vcard' });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
         a.download = 'Jon_Hungerford_Sunrun.vcf';
-        document.body.appendChild(a);
         a.click();
-        document.body.removeChild(a);
-        closePrompt();
+        closeModal();
     }
 </script>
+
 </body>
 </html>

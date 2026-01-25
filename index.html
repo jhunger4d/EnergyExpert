@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunrun Solar By Jon - Clean Energy Expert</title>
+    <!-- Bootstrap CSS for responsive layout -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --sunrun-orange: #f47920; --sunrun-dark: #333; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--sunrun-dark); background-color: #f9f9f9; }
+        .hero { background: white; padding: 40px 20px; text-align: center; border-bottom: 5px solid var(--sunrun-orange); }
+        .profile-img { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--sunrun-orange); object-fit: cover; margin-bottom: 20px; }
+        .btn-orange { background-color: var(--sunrun-orange); color: white; font-weight: bold; padding: 12px 30px; border-radius: 50px; }
+        .btn-orange:hover { background-color: #d66518; color: white; }
+        .review-card { background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .stars { color: #ffc107; margin-bottom: 10px; }
+        .form-section { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-top: -50px; }
+        #contact-prompt { display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; }
+        .prompt-box { background: white; padding: 30px; border-radius: 15px; text-align: center; max-width: 90%; }
+    </style>
+</head>
+<body>
+
+<!-- Auto-Download Prompt Overlay -->
+<div id="contact-prompt">
+    <div class="prompt-box">
+        <h4>Save Jon's Contact Info?</h4>
+        <p>Get instant access to Jon Hungerford's direct line for any solar questions.</p>
+        <button onclick="downloadVCard()" class="btn btn-orange mb-2">Yes, Save Contact</button><br>
+        <button onclick="closePrompt()" class="btn btn-link text-muted">Maybe Later</button>
+    </div>
+</div>
+
+<header class="hero">
+    <img src="profile.jpg" alt="Jon Hungerford" class="profile-img">
+    <h1 class="fw-bold">Sunrun Solar By Jon</h1>
+    <p class="lead">Serving Stockton, Morada, and San Joaquin County</p>
+    <div class="stars">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <span class="ms-2 fw-bold">5.0 (36+ Reviews)</span>
+    </div>
+    <button onclick="downloadVCard()" class="btn btn-orange mt-3">
+        <i class="fas fa-user-plus me-2"></i>SAVE MY CONTACT INFO
+    </button>
+</header>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="form-section">
+                <h3 class="text-center mb-4">Request a Free Quote</h3>
+                <form id="solarForm">
+                    <!-- Hidden Referrer Field -->
+                    <input type="hidden" id="referrer" name="referrer" value="">
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" class="form-control" name="phone" required>
+                        </div>
+                        <div class="col">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Home Address</label>
+                        <input type="text" class="form-control" name="address" placeholder="123 Solar St, Stockton, CA">
+                    </div>
+                    <button type="submit" class="btn btn-orange w-100 py-3">SEND TO JON</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12 text-center mb-4">
+            <h2 class="fw-bold">What Your Neighbors Say</h2>
+        </div>
+        <div class="col-md-4">
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Jon made the entire process so easy. He explained everything clearly and we are already seeing massive savings on our PGE bill!"</p>
+                <footer class="blockquote-footer">Verified Customer in Morada</footer>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Professional, knowledgeable, and honest. Unlike other companies, Jon actually cares about what is best for the homeowner."</p>
+                <footer class="blockquote-footer">Verified Customer in Stockton</footer>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Highly recommend! The installation was smooth and Jon was available for every question we had throughout the process."</p>
+                <footer class="blockquote-footer">Verified Customer in Lincoln Village</footer>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center py-4 text-muted">
+    <p>&copy; 2024 Sunrun Solar By Jon | <a href="tel:2096394845" class="text-decoration-none text-muted">(209) 639-4845</a></p>
+</footer>
+
+<script>
+    // 1. Populate Hidden Referrer Section from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const referrerVal = urlParams.get('referrer');
+    if (referrerVal) {
+        document.getElementById('referrer').value = referrerVal;
+    }
+
+    // 2. Automatic Contact Download Logic
+    window.onload = function() {
+        // Show prompt after 1.5 seconds
+        setTimeout(() => {
+            document.getElementById('contact-prompt').style.display = 'flex';
+        }, 1500);
+    };
+
+    function closePrompt() {
+        document.getElementById('contact-prompt').style.display = 'none';
+    }
+
+    function downloadVCard() {
+        const vcardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Jon Hungerford (Sunrun Solar)
+ORG:Sunrun Solar
+TITLE:Solar Consultant
+TEL;TYPE=CELL,VOICE:(209) 639-4845
+URL:https://sunrun.com
+END:VCARD`;
+
+        const blob = new Blob([vcardData], { type: 'text/vcard' });
+        const file = new File([blob], "JonHungerford.vcf", { type: "text/vcard" });
+
+        // Try Web Share API for native mobile contact saving
+        if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+            navigator.share({
+                files: [file],
+                title: 'Jon Hungerford',
+                text: 'Save Jon\'s contact info to your phone.'
+            }).then(() => closePrompt()).catch(() => performManualDownload(blob));
+        } else {
+            performManualDownload(blob);
+        }
+    }
+
+    function performManualDownload(blob) {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Jon_Hungerford_Sunrun.vcf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        closePrompt();
+    }
+</script>
+</body>
+</html>

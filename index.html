@@ -277,15 +277,20 @@
 
     // 5. vCard with License
     function downloadVCard() {
-        const photo = window.location.origin + "/profile.jpg";
-        const vcard = [
-            'BEGIN:VCARD', 'VERSION:3.0',
-            'FN:Jon Hungerford', 'TITLE:Energy Expert',
+        const photoUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/') + "profile.jpg";
+            const vcard = [
+            'BEGIN:VCARD',
+            'VERSION:3.0',
+            'FN:Jon Hungerford',
+            'TITLE:Energy Expert',
+            'ORG:Sunrun',
             'TEL;TYPE=CELL,VOICE:(209) 639-4845',
             'EMAIL;TYPE=PREF,INTERNET:Jon.Hungerford@Sunrun.com',
             'URL:https://tinyurl.com/JonsvCard',
-            'PHOTO;VALUE=URI:' + photo,
-            'NOTE:Lic: 105699 SP. Your local energy expert with 10+ years of experience. I help families protect themselves from the unreliable grid by producing and storing their own power on site. Lets see if your home can also qualify for the CalReady Power Plant.',
+            // High Definition URI Link
+            'PHOTO;VALUE=URI;TYPE=JPEG:' + photoUrl,
+            'NOTE:Lic: 105699 SP. Your local energy expert with 10+ years of experience. I help families protect themselves from the unreliable grid by producing and storing their own power on site.',
+            'REV:' + new Date().toISOString().replace(/[:.-]/g, ''), // Revision date helps phones update the contact
             'END:VCARD'
         ].join('\n');
         const blob = new Blob([vcard], { type: 'text/vcard' });
@@ -295,6 +300,7 @@
         a.click();
         closeModal();
     }
+    
 document.getElementById('mainForm').addEventListener('submit', function(e) {
         e.preventDefault(); 
         

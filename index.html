@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,17 +49,17 @@
         .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 25px; }
         .hero p { font-size: 1.2rem; color: var(--muted); margin-bottom: 35px; }
 
-        /* Sections General */
-        section { padding: 100px 8%; }
-        h2 { font-size: 2.5rem; margin-bottom: 15px; text-align: center; color: var(--text); }
-        .section-header { text-align: center; margin-bottom: 50px; }
-
         /* History & Proof Sections */
+        .section-header { text-align: center; margin-bottom: 50px; }
         .history-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 50px; }
         .stat-box { background: var(--card-bg); padding: 30px; border-radius: 20px; border-left: 5px solid var(--accent); }
         .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .photo-item { border-radius: 15px; overflow: hidden; height: 300px; border: 1px solid var(--border); }
         .photo-item img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Sections General */
+        section { padding: 100px 8%; }
+        h2 { font-size: 2.5rem; margin-bottom: 15px; text-align: center; color: var(--text); }
 
         /* Reviews */
         .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
@@ -92,7 +93,6 @@
             cursor: pointer; border: none; font-size: 1rem; width: 100%; text-align: center; transition: 0.2s;
         }
         .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .btn-primary:disabled { opacity: 0.7; cursor: not-allowed; }
         .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text); margin-bottom: 25px; }
 
         /* Modal */
@@ -120,7 +120,7 @@
 <section class="hero">
     <div class="hero-content">
         <h1 style="color:var(--text)">Clean Energy. <br><span style="color:var(--accent)">Done Right.</span></h1>
-        <p>Jon Hungerford provides professional-grade solar strategies for homeowners who value integrity over high-pressure sales.</p>
+        <p>Jon Hungerford provides professional-grade energy strategies for homeowners who value integrity over high-pressure tactics.</p>
         <button onclick="downloadVCard()" class="btn btn-primary" style="width: auto;">SAVE MY DIRECT CONTACT</button>
     </div>
     <div class="hero-image">
@@ -135,12 +135,12 @@
     </div>
     <div class="history-grid">
         <div class="stat-box">
-            <h3 style="margin-bottom:10px;">Veteran Solar Consultant</h3>
-            <p>With years of experience as a dedicated Sunrun representative, Jon has navigated the complexities of California's energy landscape (NEM 2.0 to 3.0) to ensure homeowners maximize their investment.</p>
+            <h3 style="margin-bottom:10px;">Veteran Consultant</h3>
+            <p>With a decade of experience as a dedicated Sunrun representative, Jon has navigated the complexities of California's energy landscape (NEM 2.0 to 3.0) to ensure homeowners maximize their benefit.</p>
         </div>
         <div class="stat-box">
             <h3 style="margin-bottom:10px;">Community Rooted</h3>
-            <p>Based in Stockton, Jon doesn't just sell solar; he builds local infrastructure. He maintains a perfect 5.0-star rating by prioritizing post-install support and long-term customer satisfaction.</p>
+            <p>Based in Stockton, Jon is a true neighbor and friend. He maintains a perfect 5.0-star rating by prioritizing post-install support and long-term customer satisfaction.</p>
         </div>
     </div>
     
@@ -156,13 +156,13 @@
     <div class="review-grid">
         <div class="review-card">
             <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-            <p>"Jon is the only rep I trust. He didn't just give us a pitch; he gave us an education. Our PGE bill has practically vanished."</p>
-            <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Michael R.</p>
+            <p>"Jon is very knowledgeable as well as personable.  He is always looking out for your best interest."</p>
+            <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Kathryn D.</p>
         </div>
         <div class="review-card">
             <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-            <p>"Outstanding communication. If you're looking for someone who actually answers their phone, Jon is your guy."</p>
-            <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Sarah T.</p>
+            <p>"Jon has been great even years after solar install. Truly committed to customer satisfaction. Any question you have, he will be able to get you the answer. No regrets."</p>
+            <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Javier C.</p>
         </div>
         <div class="review-card">
             <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
@@ -170,7 +170,7 @@
             <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Kristie D.</p>
         </div>
     </div>
-    <a href="https://tinyurl.com/SolarByJonReviews" target="_blank" class="g-link">View All Five-Star Reviews on Google <i class="fa fa-external-link-alt ms-1"></i></a>
+    <a href="https://tinyurl.com/SolarByJonReviews" target="_blank" class="g-link">See all my 5 <span class="stars"><i class="fa fa-star"></i></span> <span style="color:var(--primary)">Reviews on Google <i class="fa fa-external-link-alt ms-1"></i></span></a>
 </section>
 
 <section style="background: var(--card-bg);">
@@ -178,7 +178,7 @@
         <h2>Professional Consultation</h2>
         <p style="text-align:center; color: var(--muted); margin-bottom: 40px;">Detailed Sustainability Audit & Energy Assessment</p>
         
-        <form id="mainForm">
+        <form action="https://script.google.com/macros/s/AKfycbwzKePw_zU-y8dC6a8Wh56BAqgoRrWV1lr6rR6NZSsszgGxiCy1ndHx0LP0x2nvqlY/exec" method="POST" id="mainForm">
             <input type="hidden" id="tracking_origin" name="Tracking_Source_QR" value="Direct Visit">
             
             <div class="form-group">
@@ -211,11 +211,11 @@
             <button type="button" class="btn btn-outline" onclick="addReferral()"><i class="fa fa-user-plus me-2"></i> Add a Referral?</button>
             
             <p style="font-size: 0.65rem; color: var(--muted); margin-bottom: 15px; line-height: 1.3;">
-                * By clicking the button below, I provide my express written consent to be contacted by Jon Hungerford (Sunrun) for marketing purposes at the phone number and/or email provided above via telephone, SMS, or email, including the use of automated technology or artificial/pre-recorded voice, even if my number is currently listed on any State, Federal, or Corporate Do Not Call list. I understand that my consent is not a condition of purchase. California HIS #105699 SP.
+                * By clicking the button below, I provide my express written consent to be contacted by Jon Hungerford for marketing purposes at the phone number and/or email provided above via telephone, SMS, or email, including the use of automated technology or artificial/pre-recorded voice, even if my number is currently listed on any State, Federal, or Corporate Do Not Call list. I understand that my consent is not a condition of purchase. California HIS #105699 SP.
             </p>
 
-            <button type="submit" id="submitBtn" class="btn btn-primary">REQUEST CONTACT / SUBMIT REFERRAL</button>
-            <p id="formStatus" style="text-align: center; margin-top: 10px; font-weight: 600; font-size: 0.9rem;"></p>
+            <div id="formStatus" style="text-align:center; margin-bottom:10px; font-weight:bold; display:none;"></div>
+            <button type="submit" class="btn btn-primary">REQUEST CONTACT / SUBMIT REFERRAL</button>
         </form>
     </div>
 </section>
@@ -224,64 +224,14 @@
     <div class="modal-box">
         <i class="fa fa-address-card" style="font-size: 3.5rem; color: var(--accent); margin-bottom: 25px;"></i>
         <h3>Save Jon's Direct Line</h3>
-        <p style="color: var(--muted); margin-bottom: 30px;">Keep Jon Hungerford saved for instant access to solar support.</p>
+        <p style="color: var(--muted); margin-bottom: 30px;">Keep Jon's info saved for immediate support.</p>
         <button onclick="downloadVCard()" class="btn btn-primary">YES, DOWNLOAD CONTACT</button>
         <button onclick="closeModal()" style="margin-top:15px; background:none; border:none; color:var(--muted); cursor:pointer; font-weight:700;">Maybe Later</button>
     </div>
 </div>
 
 <script>
-    // 1. AJAX Form Submission
-    const form = document.getElementById("mainForm");
-    const submitBtn = document.getElementById("submitBtn");
-    const formStatus = document.getElementById("formStatus");
-
-    form.addEventListener("submit", async function(event) {
-        event.preventDefault();
-        
-        // Update UI state
-        submitBtn.disabled = true;
-        submitBtn.innerText = "SUBMITTING INFO...";
-        formStatus.innerText = "";
-        formStatus.style.color = "inherit";
-
-        const formData = new FormData(form);
-
-        try {
-            const response = await fetch("https://formspree.io/f/jhunger4d@gmail.com", {
-                method: "POST",
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                submitBtn.innerText = "COMPLETED ✅";
-                formStatus.innerText = "Success! Your information has been sent.";
-                formStatus.style.color = "#48bb78";
-                form.reset();
-                // Optionally reset button after a few seconds
-                setTimeout(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = "REQUEST CONTACT / SUBMIT REFERRAL";
-                }, 5000);
-            } else {
-                const data = await response.json();
-                submitBtn.disabled = false;
-                submitBtn.innerText = "REQUEST CONTACT / SUBMIT REFERRAL";
-                formStatus.innerText = data.error || "Oops! There was a problem submitting your form.";
-                formStatus.style.color = "#f56565";
-            }
-        } catch (error) {
-            submitBtn.disabled = false;
-            submitBtn.innerText = "REQUEST CONTACT / SUBMIT REFERRAL";
-            formStatus.innerText = "Oops! Network error. Please try again.";
-            formStatus.style.color = "#f56565";
-        }
-    });
-
-    // 2. Phone Auto-Formatting
+    // 1. Phone Auto-Formatting Logic
     function formatPhoneNumber(value) {
         if (!value) return value;
         const phoneNumber = value.replace(/[^\d]/g, '');
@@ -299,17 +249,17 @@
         }
     });
 
-    // 3. URL Hidden Tracking Referrer
+    // 2. URL Hidden Tracking
     const params = new URLSearchParams(window.location.search);
     if(params.get('referrer')) { 
         document.getElementById('tracking_origin').value = params.get('referrer'); 
     }
 
-    // 4. Modal Popup
+    // 3. Modal Popup
     window.onload = () => { setTimeout(() => { document.getElementById('vcardModal').style.display = 'flex'; }, 2000); };
     function closeModal() { document.getElementById('vcardModal').style.display = 'none'; }
 
-    // 5. Dynamic Referral Blocks
+    // 4. Dynamic Referral Blocks
     let refIdx = 0;
     function addReferral() {
         refIdx++;
@@ -326,25 +276,47 @@
         document.getElementById('referral_area').appendChild(wrap);
     }
 
-    // 6. vCard Logic
-    function downloadVCard() {
-        const photo = window.location.origin + "/profile.jpg";
-        const vcard = [
-            'BEGIN:VCARD', 'VERSION:3.0',
-            'FN:Jon Hungerford', 'ORG:Sunrun', 'TITLE:Energy Expert',
-            'TEL;TYPE=CELL,VOICE:(209) 639-4845',
-            'EMAIL;TYPE=PREF,INTERNET:Jon.Hungerford@Sunrun.com',
-            'URL:https://tinyurl.com/SolarByJonReviews',
-            'PHOTO;VALUE=URI:' + photo,
-            'NOTE:Lic: 105699 SP. Direct line for Sunrun Solar solutions. 10+ years of experience helping families ditch the grid. Ask about the CalReady Power Plant.',
-            'END:VCARD'
-        ].join('\n');
-        const blob = new Blob([vcard], { type: 'text/vcard' });
-        const a = document.createElement('a');
-        a.href = window.URL.createObjectURL(blob);
-        a.download = 'Jon_Hungerford.vcf';
-        a.click();
-        closeModal();
+    // 5. vCard with License
+    async function downloadVCard() {
+        const photoUrl = "vCardphoto.jpg"; 
+        
+        const toBase64 = URL => fetch(URL)
+            .then(response => response.blob())
+            .then(blob => new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = reject;
+                reader.readAsDataURL(blob);
+            }));
+
+        try {
+            const base64Photo = await toBase64(photoUrl);
+            
+            const vcard = [
+                'BEGIN:VCARD',
+                'VERSION:2.1',
+                'N:Hungerford;Jon;;;',      // Correct 'Name' format for iPhones
+                'FN:Jon Hungerford',         // 'Full Name' for display
+                'ORG:Sunrun - Lic#105699 SP',
+                'TITLE:Energy Expert',
+                'TEL;CELL;VOICE:(209) 639-4845',
+                'EMAIL;PREF;INTERNET:Jon.Hungerford@Sunrun.com',
+                'URL:https://tinyurl.com/JonsvCard',
+                'URL:https://tinyurl.com/SolarByJonReviews',
+                'PHOTO;JPEG;ENCODING=BASE64:' + base64Photo, // Embedded HD photo
+                'NOTE: Your local energy expert with 10+ years of experience. ',
+                'END:VCARD'
+            ].join('\r\n'); // Use \r\n (CRLF) for iPhone compatibility
+
+            const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+            const a = document.createElement('a');
+            a.href = window.URL.createObjectURL(blob);
+            a.download = 'Jon_Hungerford.vcf';
+            a.click();
+            closeModal();
+        } catch (e) {
+            console.error("Photo load failed, saving contact without it.", e);
+        }
     }
 </script>
 </body>

@@ -6,15 +6,17 @@
     <title>Jon Hungerford | Energy Expert</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Calendly link widget CSS and JS -->
+    <!-- Calendly link widget load -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    
     <style>
         :root {
             --bg: #ffffff;
             --text: #1a202c;
             --primary: #1a365d;
             --accent: #ed8936;
+            --success: #059669; /* Emerald Green for psychological "Go" trigger */
             --card-bg: #f7fafc;
             --border: #e2e8f0;
             --muted: #718096;
@@ -51,69 +53,43 @@
 
         section { padding: 100px 8%; }
         h2 { font-size: 2.5rem; margin-bottom: 15px; text-align: center; color: var(--text); }
-        .section-header { text-align: center; margin-bottom: 50px; }
-
-        .history-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 50px; }
-        .stat-box { background: var(--card-bg); padding: 30px; border-radius: 20px; border-left: 5px solid var(--accent); }
-        .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .photo-item { border-radius: 15px; overflow: hidden; height: 300px; border: 1px solid var(--border); }
-        .photo-item img { width: 100%; height: 100%; object-fit: cover; }
 
         .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .review-card { background: var(--card-bg); padding: 35px; border-radius: 20px; border: 1px solid var(--border); display: flex; flex-direction: column; }
         .stars { color: var(--accent); margin-bottom: 15px; font-size: 0.9rem;}
         .g-link { color: var(--primary); font-weight: 700; text-decoration: none; display: block; margin-top: 40px; text-align: center; }
 
-        /* Optimized Form Layout */
         .form-container { max-width: 750px; margin: 0 auto; background: var(--card-bg); padding: 50px; border-radius: 30px; border: 1px solid var(--border); }
-        .form-group { margin-bottom: 20px; width: 100%; }
+        .form-group { margin-bottom: 20px; }
         label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
-        input, select, textarea { 
-            width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 1rem;
-        }
+        input, select, textarea { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 1rem; }
         
-        /* Fixed Time Buttons for Mobile */
+        /* Mobile Fixed Time Options */
         .time-options { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; justify-content: center; }
-        .time-btn { flex: 1 1 100px; min-width: 100px; }
+        .time-btn { flex: 1; min-width: 100px; }
         .time-btn input { display: none; }
-        .time-btn label { 
-            padding: 12px 5px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; display: block; background: var(--bg); text-align: center; font-size: 0.8rem;
-        }
+        .time-btn label { padding: 12px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; display: block; background: var(--bg); text-align: center; font-size: 0.8rem; }
         .time-btn input:checked + label { background: var(--primary); color: white; border-color: var(--primary); }
 
-        .form-divider { text-align: center; font-weight: 800; margin: 15px 0; color: var(--muted); letter-spacing: 2px; }
-
-        .referral-block { border: 2px dashed var(--accent); padding: 25px; border-radius: 20px; margin-bottom: 25px; background: var(--bg); position: relative; animation: slideIn 0.3s; }
-        @keyframes slideIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
-        .remove-ref { color: #f56565; cursor: pointer; font-size: 0.75rem; font-weight: 800; float: right; }
-
-        .btn { 
-            display: inline-block; padding: 18px 35px; border-radius: 12px; font-weight: 800; text-decoration: none; 
-            cursor: pointer; border: none; font-size: 1rem; width: 100%; text-align: center; transition: 0.2s;
-        }
+        .btn { display: inline-block; padding: 18px 35px; border-radius: 12px; font-weight: 800; text-decoration: none; cursor: pointer; border: none; font-size: 1rem; width: 100%; text-align: center; transition: 0.2s; }
         .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text); margin-bottom: 25px; }
-        .btn-schedule { background: var(--accent); color: white; }
-        .btn-schedule:hover { filter: brightness(1.1); }
+        .btn-schedule { background: var(--success); color: white; margin-bottom: 0px; box-shadow: 0 10px 20px rgba(5, 150, 105, 0.2); }
+        .btn-share { background: var(--success); color: white; font-size: 1.1rem; }
+        
+        .or-divider { text-align: center; font-weight: 800; margin: 20px 0; color: var(--muted); font-size: 1.2rem; }
 
         /* Modal Overhaul */
-        .modal { display:none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .modal-box { background: var(--bg); padding: 40px; border-radius: 30px; text-align: center; width: 95%; max-width: 420px; border: 1px solid var(--border); }
-        .modal-btn-main { background: var(--accent); color: white; margin-bottom: 12px; font-size: 1.1rem; border: 2px solid var(--accent); }
-        .modal-btn-alt { background: var(--primary); color: white; margin-bottom: 12px; }
-        .skip-link { margin-top:20px; background:none; border:none; color:var(--muted); cursor:pointer; font-weight:800; font-size:1.1rem; display:block; width:100%; text-decoration:underline; }
+        .modal { display:none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(8px); padding: 20px; }
+        .modal-box { background: var(--bg); padding: 40px; border-radius: 30px; text-align: center; width: 100%; max-width: 450px; border: 1px solid var(--border); position: relative; }
+        .skip-link { margin-top:20px; background:none; border:none; color:var(--muted); cursor:pointer; font-weight:800; font-size:1.2rem; display:block; width:100%; text-decoration:underline; }
+        .checkbox-container { margin-top: 25px; font-size: 0.85rem; color: var(--muted); display: flex; align-items: center; justify-content: center; gap: 8px; }
 
-        .checkbox-container { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 15px 0; width: 100%; color: var(--muted); font-size: 0.9rem; }
-
-        @media (max-width: 900px) {
-            .hero, .history-grid, .photo-grid { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
-            .hero h1 { font-size: 2.5rem; }
-            nav { justify-content: center; text-align: center; }
-            .nav-contact { text-align: center; margin-top: 10px; width: 100%; }
-            .form-container { padding: 30px 20px; border-radius: 20px; }
-            .form-group-row { display: block !important; }
-            .form-group-row div { margin-bottom: 20px; }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.2rem; }
             section { padding: 60px 5%; }
+            .form-container { padding: 30px 15px; }
+            .form-group[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+            .time-btn { min-width: 100%; }
         }
     </style>
 </head>
@@ -138,51 +114,6 @@
     </div>
 </section>
 
-<!-- Standard Sections (History, Proof, Reviews unchanged per request) -->
-<section style="background: var(--card-bg);">
-    <div class="section-header">
-        <h2>The Standard of Excellence</h2>
-        <p>Expertise built on years of local service in San Joaquin County.</p>
-    </div>
-    <div class="history-grid">
-        <div class="stat-box">
-            <h3 style="margin-bottom:10px;">Veteran Consultant</h3>
-            <p>With a decade of experience as a dedicated Sunrun representative, Jon has navigated the complexities of California's energy landscape (NEM 2.0 to 3.0) to ensure homeowners maximize their benefit.</p>
-        </div>
-        <div class="stat-box">
-            <h3 style="margin-bottom:10px;">Community Rooted</h3>
-            <p>Based in Stockton, Jon is a true neighbor and friend. He maintains a perfect 5.0-star rating by prioritizing post-install support and long-term customer satisfaction.</p>
-        </div>
-    </div>
-    <div class="photo-grid">
-        <div class="photo-item"><img src="install_1.jpg" alt="Solar Install 1"></div>
-        <div class="photo-item"><img src="install_2.jpg" alt="Solar Install 2"></div>
-        <div class="photo-item"><img src="install_3.jpg" alt="Solar Install 3"></div>
-    </div>
-</section>
-
-<section>
-    <h2>Proven Client Success</h2>
-    <div class="review-grid">
-        <div class="review-card">
-            <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-            <p>"Jon is very knowledgeable as well as personable.  He is always looking out for your best interest."</p>
-            <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Kathryn D.</p>
-        </div>
-        <div class="review-card">
-            <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-            <p>"Jon has been great even years after solar install. Truly committed to customer satisfaction. Any question you have, he will be able to get you the answer. No regrets."</p>
-            <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Javier C.</p>
-        </div>
-        <div class="review-card">
-            <div class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-            <p>"Jon treated me like a friend through the entire process. He handles everything quickly and takes pride in his work."</p>
-            <p style="margin-top:20px; font-weight:800; font-size:0.8rem;">— Kristie D.</p>
-        </div>
-    </div>
-    <a href="https://tinyurl.com/SolarByJonReviews" target="_blank" class="g-link">See all my 5 <span class="stars"><i class="fa fa-star"></i></span> <span style="color:var(--primary)">Reviews on Google <i class="fa fa-external-link-alt ms-1"></i></span></a>
-</section>
-
 <section style="background: var(--card-bg);">
     <div class="form-container">
         <h2>Professional Consultation</h2>
@@ -190,18 +121,19 @@
         
         <form action="https://script.google.com/macros/s/AKfycbwzKePw_zU-y8dC6a8Wh56BAqgoRrWV1lr6rR6NZSsszgGxiCy1ndHx0LP0x2nvqlY/exec" method="POST" id="mainForm">
             <input type="hidden" id="tracking_origin" name="Tracking_Source_QR" value="Direct Visit">
+            <input type="hidden" id="followup_date" name="Calendar_Followup" value="">
             
             <div class="form-group">
                 <label>Full Name *</label>
-                <input type="text" name="Client_Name" id="Client_Name" required placeholder="First & Last Name">
+                <input type="text" name="Client_Name" id="Client_Name" required placeholder="Full Name">
             </div>
             
-            <div class="form-group-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <div class="form-group">
+            <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div>
                     <label>Phone Number *</label>
                     <input type="tel" name="Client_Phone" id="Client_Phone" required placeholder="(XXX) XXX-XXXX" class="phone-format">
                 </div>
-                <div class="form-group">
+                <div>
                     <label>Email (Optional)</label>
                     <input type="email" name="Client_Email" id="Client_Email" placeholder="email@address.com">
                 </div>
@@ -220,134 +152,180 @@
             
             <button type="button" class="btn btn-outline" onclick="addReferral()"><i class="fa fa-user-plus me-2"></i> Add a Referral?</button>
             
-            <p style="font-size: 0.65rem; color: var(--muted); margin-bottom: 15px; line-height: 1.3;">
+            <p style="font-size: 0.65rem; color: var(--muted); margin-bottom: 25px; line-height: 1.3;">
                 * By clicking a button below, I provide my express written consent to be contacted by Jon Hungerford for marketing purposes... California HIS #105699 SP.
             </p>
 
-            <button type="button" id="schedBtn" class="btn btn-primary btn-schedule" onclick="openCalendly()">
-                <i class="fa fa-calendar-alt me-2"></i> SCHEDULE MY APPOINTMENT NOW
+            <button type="button" class="btn btn-schedule" onclick="openCalendly()">
+                <i class="fa fa-calendar-check me-2"></i> SCHEDULE MY APPOINTMENT NOW
             </button>
             
-            <div class="form-divider">OR</div>
+            <div class="or-divider">OR</div>
 
             <button type="submit" id="submitBtn" class="btn btn-primary">REQUEST A CALL/SUBMIT A REFERRAL</button>
         </form>
     </div>
 </section>
 
-<!-- INITIAL MODAL -->
+<!-- INITIAL POPUP -->
 <div id="vcardModal" class="modal">
     <div class="modal-box">
-        <i class="fa fa-address-card" style="font-size: 3.5rem; color: var(--accent); margin-bottom: 25px;"></i>
-        <h3>Save Jon's Direct Line</h3>
-        <p style="color: var(--muted); margin-bottom: 20px;">Keep Jon's info saved for immediate support.</p>
+        <i class="fa fa-id-badge" style="font-size: 3.5rem; color: var(--accent); margin-bottom: 20px;"></i>
+        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Stay Connected with Jon</h3>
+        <p style="color: var(--muted); margin-bottom: 25px;">Ensure you recognize Jon's call and get expert support when you need it.</p>
         
-        <!-- Third Prominent Choice: Swap Info -->
-        <button onclick="swapInfoAction()" class="btn modal-btn-main">SWAP CONTACT INFO</button>
-        <button onclick="downloadVCard()" class="btn modal-btn-alt">DOWNLOAD JON'S CONTACT</button>
+        <button onclick="startSharingFlow()" class="btn btn-share" style="margin-bottom: 12px;">SHARE YOUR INFO WITH JON</button>
+        <button onclick="downloadVCard()" class="btn btn-outline" style="margin-bottom: 0;">SAVE JON'S CONTACT ONLY</button>
+        
+        <button onclick="closeModal('vcardModal')" class="skip-link">Maybe Later</button>
 
         <div class="checkbox-container">
             <input type="checkbox" id="hidePromptCheckbox">
             <label for="hidePromptCheckbox">Don't show this again</label>
         </div>
-
-        <button onclick="closeModal('vcardModal')" class="skip-link">Maybe Later</button>
     </div>
 </div>
 
-<!-- TEXT MESSAGE INSTRUCTION MODAL -->
-<div id="smsModal" class="modal">
+<!-- SHARE INFO FOLLOW UP MODAL -->
+<div id="shareFollowupModal" class="modal">
     <div class="modal-box">
-        <i class="fab fa-reply" style="font-size: 3.5rem; color: var(--primary); margin-bottom: 25px;"></i>
-        <h3>Final Step!</h3>
-        <p style="color: var(--muted); margin-bottom: 25px;">To ensure I recognize your number when you reach out, please <strong>press send</strong> on the text message about to appear. This helps me keep our conversation organized!</p>
-        <button onclick="triggerSMS()" class="btn btn-primary">GOT IT, SEND TEXT</button>
-        <button onclick="closeModal('smsModal')" class="skip-link">No Thanks</button>
+        <h3 id="followupTitle">One Last Step...</h3>
+        <p id="followupText" style="margin-bottom: 20px;"></p>
+        
+        <div id="pcFields" style="display: none;">
+            <div class="form-group" style="text-align: left;">
+                <label>Your Name</label>
+                <input type="text" id="shareName" placeholder="Full Name">
+            </div>
+            <div class="form-group" style="text-align: left;">
+                <label>Your Number</label>
+                <input type="tel" id="sharePhone" class="phone-format" placeholder="(XXX) XXX-XXXX">
+            </div>
+            <div class="form-group" style="text-align: left;">
+                <label>Email (Optional)</label>
+                <input type="email" id="shareEmail" placeholder="email@address.com">
+            </div>
+        </div>
+
+        <div id="mobileFields" style="display: none;">
+            <div class="form-group" style="text-align: left;">
+                <label>Your Name</label>
+                <input type="text" id="shareNameMobile" placeholder="Full Name">
+            </div>
+        </div>
+
+        <button onclick="completeShare()" class="btn btn-primary">FINISH & THANK YOU</button>
     </div>
 </div>
 
-<!-- POST-BOOKING MODAL -->
-<div id="postBookModal" class="modal">
+<!-- POST-SCHEDULE MODAL -->
+<div id="postScheduleModal" class="modal">
     <div class="modal-box">
-        <i class="fa fa-check-circle" style="font-size: 3.5rem; color: #48bb78; margin-bottom: 25px;"></i>
-        <h3>Appointment Set!</h3>
-        <p style="color: var(--muted); margin-bottom: 30px;">To ensure you recognize my call at our scheduled time, make sure my contact info is saved in your phone.</p>
-        <button onclick="downloadVCard()" class="btn btn-primary">DOWNLOAD JON'S INFO</button>
-        <button onclick="closeModal('postBookModal')" class="skip-link">Already Saved</button>
+        <i class="fa fa-check-circle" style="font-size: 3.5rem; color: var(--success); margin-bottom: 20px;"></i>
+        <h3>Appointment Requested!</h3>
+        <p style="color: var(--muted); margin-bottom: 25px;">To ensure you recognize my call, please make sure my info is saved in your phone.</p>
+        <button onclick="downloadVCard()" class="btn btn-primary">SAVE MY CONTACT INFO</button>
+        <button onclick="closeModal('postScheduleModal')" class="skip-link">I Already Saved It</button>
     </div>
 </div>
 
 <script>
-    // 1. Phone Formatting
-    function formatPhoneNumber(value) {
-        if (!value) return value;
-        const phoneNumber = value.replace(/[^\d]/g, '');
-        const l = phoneNumber.length;
-        if (l < 4) return phoneNumber;
-        if (l < 7) return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
-        return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwzKePw_zU-y8dC6a8Wh56BAqgoRrWV1lr6rR6NZSsszgGxiCy1ndHx0LP0x2nvqlY/exec";
+    const JON_PHONE = "2095650550";
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const hasSms = /iPhone|Android/i.test(navigator.userAgent);
+
+    // 1. Follow-up Logic (7 Days, No Sundays)
+    function getFollowUpDate() {
+        let date = new Date();
+        date.setDate(date.getDate() + 7);
+        if (date.getDay() === 0) date.setDate(date.getDate() + 1); // If Sunday, move to Monday
+        return date.toLocaleDateString() + " @ 12:00 PM";
     }
+    document.getElementById('followup_date').value = getFollowUpDate();
 
-    document.addEventListener('input', (e) => {
-        if (e.target.type === 'tel' || e.target.classList.contains('phone-format')) {
-            e.target.value = formatPhoneNumber(e.target.value);
-        }
-    });
-
-    // 2. Submission Handler (Email only)
-    const mainForm = document.getElementById('mainForm');
-    const submitBtn = document.getElementById('submitBtn');
-
-    mainForm.onsubmit = async (e) => {
-        e.preventDefault();
-        submitBtn.disabled = true;
-        submitBtn.innerText = "SUBMITTING INFO...";
-        const formData = new FormData(mainForm);
-        try {
-            await fetch(mainForm.action, { method: 'POST', body: formData, mode: 'no-cors' });
-            submitBtn.innerText = "COMPLETED ✅";
-            setTimeout(() => {
-                submitBtn.innerText = "REQUEST A CALL/SUBMIT A REFERRAL";
-                submitBtn.disabled = false;
-                mainForm.reset();
-            }, 5000);
-        } catch (err) {
-            submitBtn.innerText = "ERROR - RETRY";
-            submitBtn.disabled = false;
-        }
-    };
-
-    // 3. Calendly Logic (Popup + Post-book trigger)
+    // 2. Calendly Popup with Pre-fill
     function openCalendly() {
         const name = document.getElementById('Client_Name').value;
         const email = document.getElementById('Client_Email').value;
         const phone = document.getElementById('Client_Phone').value;
 
-        if (!name || !phone) {
-            alert("Please provide your name and phone number before scheduling.");
+        if(!name || !phone) {
+            alert("Please provide your name and phone number so I can prepare for our call.");
             return;
         }
 
         Calendly.initPopupWidget({
-            url: 'https://calendly.com/talk2jon/quickcall',
-            prefill: {
-                name: name,
-                email: email,
-                customAnswers: { a1: phone } // Mapping phone to Calendly's 'a1' field
+            url: `https://calendly.com/talk2jon/quickcall?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&a1=${encodeURIComponent(phone)}`,
+            onEventScheduled: (e) => {
+                closeModal('calendly-overlay'); // Calendly doesn't always auto-close the widget wrapper
+                document.getElementById('postScheduleModal').style.display = 'flex';
+                // Trigger background submit so Jon gets the lead info even if Calendly doesn't sync
+                submitLeadData(new FormData(document.getElementById('mainForm')), "Scheduled via Calendly");
             }
         });
     }
 
-    // Listener for successful Calendly booking
-    window.addEventListener('message', function(e) {
-        if (e.data.event && e.data.event.indexOf('calendly.event_scheduled') !== -1) {
-            // Close Calendly modal if it doesn't close on its own
-            // (Most modern browsers handle the widget close internally)
-            document.getElementById('postBookModal').style.display = 'flex';
-        }
-    });
+    // 3. Contact Sharing Flow
+    function startSharingFlow() {
+        downloadVCard();
+        setTimeout(() => {
+            document.getElementById('vcardModal').style.display = 'none';
+            document.getElementById('shareFollowupModal').style.display = 'flex';
+            if(hasSms) {
+                document.getElementById('mobileFields').style.display = 'block';
+                document.getElementById('followupText').innerText = "Enter your name below. On the next screen, just press 'Send' on the text message so I'll know it's you when you call!";
+            } else {
+                document.getElementById('pcFields').style.display = 'block';
+                document.getElementById('followupText').innerText = "Please provide your details so I can reach out with the expert guidance you need.";
+            }
+        }, 1500);
+    }
 
-    // 4. Modal Visibility
+    async function completeShare() {
+        const name = hasSms ? document.getElementById('shareNameMobile').value : document.getElementById('shareName').value;
+        const phone = hasSms ? "" : document.getElementById('sharePhone').value;
+        const email = hasSms ? "" : document.getElementById('shareEmail').value;
+
+        if(!name) { alert("Please enter your name."); return; }
+
+        const payload = new FormData();
+        payload.append("Client_Name", name);
+        payload.append("Client_Phone", phone);
+        payload.append("Client_Email", email);
+        payload.append("Submission_Type", "DIRECT SHARE (NOT CONTACT FORM)");
+        payload.append("Tracking_Source_QR", document.getElementById('tracking_origin').value);
+        payload.append("Calendar_Followup", getFollowUpDate());
+
+        submitLeadData(payload, "Shared via Popup");
+
+        if(hasSms) {
+            window.location.href = `sms:+1${JON_PHONE}?body=Hi Jon, this is ${encodeURIComponent(name)}`;
+        } else {
+            alert("Thank you! I have received your information.");
+        }
+        closeModal('shareFollowupModal');
+    }
+
+    async function submitLeadData(formData, type) {
+        try {
+            await fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' });
+        } catch(e) { console.error("Submit failed", e); }
+    }
+
+    // Standard Form Submit
+    document.getElementById('mainForm').onsubmit = async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.innerText = "SUBMITTING INFO...";
+        const data = new FormData(e.target);
+        data.append("Submission_Type", "Standard Form");
+        await submitLeadData(data);
+        btn.innerText = "COMPLETED ✅";
+    };
+
+    // UI Helpers
     window.onload = () => {
         if (localStorage.getItem('hideVCardPrompt') !== 'true') {
             setTimeout(() => { document.getElementById('vcardModal').style.display = 'flex'; }, 2000);
@@ -361,62 +339,46 @@
         document.getElementById(id).style.display = 'none';
     }
 
-    // 5. Contact Logic (iPhone/Android optimized)
+    // Phone Formatting
+    document.addEventListener('input', (e) => {
+        if (e.target.classList.contains('phone-format')) {
+            let val = e.target.value.replace(/\D/g, '');
+            if (val.length > 3 && val.length <= 6) val = `(${val.slice(0,3)}) ${val.slice(3)}`;
+            else if (val.length > 6) val = `(${val.slice(0,3)}) ${val.slice(3,6)}-${val.slice(6,10)}`;
+            e.target.value = val;
+        }
+    });
+
+    // vCard Logic
     async function downloadVCard() {
-        const vcard = [
-            'BEGIN:VCARD', 'VERSION:2.1', 'N:Hungerford;Jon;;;', 'FN:Jon Hungerford',
-            'ORG:Sunrun - Lic#105699 SP', 'TITLE:Energy Expert', 'TEL;CELL;VOICE:(209) 565-0550',
-            'EMAIL;PREF;INTERNET:Jon.Hungerford@Sunrun.com', 'URL:https://tinyurl.com/JonsvCard',
-            'PHOTO;JPEG;ENCODING=BASE64:', 'NOTE:Energy expert specializing in Stockton.', 'END:VCARD'
-        ].join('\r\n');
-
-        const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'Jon_Hungerford.vcf';
-        a.click();
-        closeModal('vcardModal');
-        closeModal('postBookModal');
+        const photoUrl = "vCardphoto.jpg"; 
+        const toBase64 = URL => fetch(URL).then(r => r.blob()).then(b => new Promise((res) => {
+            const r = new FileReader(); r.onloadend = () => res(r.result.split(',')[1]); r.readAsDataURL(b);
+        }));
+        try {
+            const base64Photo = await toBase64(photoUrl);
+            const vcard = [
+                'BEGIN:VCARD', 'VERSION:2.1', 'N:Hungerford;Jon;;;', 'FN:Jon Hungerford',
+                'ORG:Sunrun - Lic#105699 SP', 'TITLE:Energy Expert', 'TEL;CELL;VOICE:(209) 565-0550',
+                'EMAIL;PREF;INTERNET:Jon.Hungerford@Sunrun.com', 'PHOTO;JPEG;ENCODING=BASE64:' + base64Photo, 'END:VCARD'
+            ].join('\r\n');
+            const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+            const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'Jon_Hungerford.vcf'; a.click();
+        } catch (e) { console.error(e); }
     }
 
-    // 6. Swap Info Logic
-    function swapInfoAction() {
-        downloadVCard();
-        // Delay the SMS modal slightly so download starts first
-        setTimeout(() => {
-            document.getElementById('smsModal').style.display = 'flex';
-        }, 800);
-    }
+    // Tracking Parser
+    const urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.get('referrer')) document.getElementById('tracking_origin').value = urlParams.get('referrer');
 
-    function triggerSMS() {
-        const nameInput = document.getElementById('Client_Name').value;
-        const name = nameInput || "[Your Name]";
-        const msg = `Hi Jon, this is ${name}`;
-        
-        // Android and iOS handle 'sms:' differently for bodies. '?' works for both modern OS.
-        window.location.href = `sms:+12095650550?body=${encodeURIComponent(msg)}`;
-        closeModal('smsModal');
-    }
-
-    // 7. Referral Dynamic Block
+    // Dynamic Referral
     let refIdx = 0;
     function addReferral() {
         refIdx++;
         const wrap = document.createElement('div'); wrap.className = 'referral-block';
-        wrap.innerHTML = `
-            <span class="remove-ref" onclick="this.parentElement.remove()">REMOVE REFERRAL</span>
-            <label style="color:var(--accent)">Referral #${refIdx}</label>
-            <div class="form-group"><input type="text" name="Referral_${refIdx}_Name" placeholder="Full Name *" required></div>
-            <div class="form-group"><input type="tel" name="Referral_${refIdx}_Phone" placeholder="Phone Number *" required class="phone-format"></div>
-            <div class="form-group"><input type="email" name="Referral_${refIdx}_Email" placeholder="Email (Optional)"></div>
-        `;
+        wrap.innerHTML = `<span class="remove-ref" onclick="this.parentElement.remove()">REMOVE</span><label>Referral #${refIdx}</label><input type="text" name="Ref_${refIdx}_Name" placeholder="Name" required><input type="tel" name="Ref_${refIdx}_Phone" placeholder="Phone" required class="phone-format">`;
         document.getElementById('referral_area').appendChild(wrap);
     }
-
-    // 8. Referral Link tracking
-    const params = new URLSearchParams(window.location.search);
-    if(params.get('referrer')) { document.getElementById('tracking_origin').value = params.get('referrer'); }
 </script>
 </body>
 </html>

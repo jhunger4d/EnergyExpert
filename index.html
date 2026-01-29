@@ -38,13 +38,11 @@
         * { box-sizing: border-box; margin: 0; padding: 0; transition: background 0.3s, color 0.3s; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
         
-        /* Navigation */
         nav { padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; background: var(--bg); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }
         .logo { font-size: 1.3rem; font-weight: 800; color: var(--text); text-decoration: none; line-height: 1.1; flex: 1 1 auto; min-width: 200px; margin-bottom: 5px; }
         .nav-contact { text-align: right; flex: 1 1 auto; }
         .nav-link { display: block; color: var(--primary); font-weight: 600; text-decoration: none; font-size: 0.85rem; }
 
-        /* Hero */
         .hero { display: flex; align-items: center; padding: 80px 8%; gap: 60px; min-height: 80vh; }
         .hero-content { flex: 1.2; }
         .hero-image { flex: 0.8; }
@@ -52,10 +50,8 @@
         .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 25px; }
         .hero p { font-size: 1.2rem; color: var(--muted); margin-bottom: 35px; }
 
-        /* Sections General */
         section { padding: 100px 8%; }
         h2 { font-size: 2.5rem; margin-bottom: 15px; text-align: center; color: var(--text); }
-
         .history-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 50px; }
         .stat-box { background: var(--card-bg); padding: 30px; border-radius: 20px; border-left: 5px solid var(--accent); }
         .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -67,13 +63,11 @@
         .stars { color: var(--accent); margin-bottom: 15px; font-size: 0.9rem;}
         .g-link { color: var(--primary); font-weight: 700; text-decoration: none; display: block; margin-top: 40px; text-align: center; }
 
-        /* Form Styling */
         .form-container { max-width: 750px; margin: 0 auto; background: var(--card-bg); padding: 50px; border-radius: 30px; border: 1px solid var(--border); }
         .form-group { margin-bottom: 20px; }
         label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
         input, select, textarea { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 1rem; }
         
-        /* Time Options - FLEX WRAP FOR MOBILE FIX */
         .time-options { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
         .time-btn { flex: 1 1 100px; }
         .time-btn input { display: none; }
@@ -89,19 +83,15 @@
         .btn-separator::before, .btn-separator::after { content: ""; position: absolute; top: 50%; width: 40%; height: 1px; background: var(--border); }
         .btn-separator::before { left: 0; } .btn-separator::after { right: 0; }
 
-        /* Modal */
         .modal-overlay { display:none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
         .modal-box { background: var(--bg); padding: 40px; border-radius: 30px; text-align: center; width: 90%; max-width: 420px; border: 1px solid var(--border); }
         .skip-link { margin-top:20px; background:none; border:none; color:var(--muted); cursor:pointer; font-weight:800; font-size:1.1rem; display:block; width:100%; text-decoration:underline; }
 
-        /* Mobile specific layout fixes */
         @media (max-width: 600px) {
             section { padding: 60px 5%; }
             .form-container { padding: 30px 15px; border-radius: 20px; }
             .hero { padding: 40px 5%; }
             .hero h1 { font-size: 2.2rem; }
-            /* Force stacking on small screens */
-            .form-group-grid { grid-template-columns: 1fr !important; }
             .time-btn { flex: 1 1 100%; }
         }
 
@@ -191,7 +181,7 @@
                 <input type="text" name="Client_Name" id="Client_Name" required placeholder="Full Name">
             </div>
             
-            <div class="form-group form-group-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                 <div>
                     <label>Phone Number *</label>
                     <input type="tel" name="Client_Phone" id="Client_Phone" required placeholder="(XXX) XXX-XXXX" class="phone-format">
@@ -230,21 +220,41 @@
     </div>
 </section>
 
-<!-- MODALS -->
+<!-- INITIAL VCARD MODAL -->
 <div id="vcardModal" class="modal-overlay">
     <div class="modal-box">
         <i class="fa fa-address-card" style="font-size: 3.5rem; color: var(--accent); margin-bottom: 25px;"></i>
-        <h3>Save Jon's Direct Line</h3>
-        <p style="color: var(--muted); margin-bottom: 20px;">Keep Jon's info saved for immediate support.</p>
+        <h3>Stay Connected</h3>
+        <p style="color: var(--muted); margin-bottom: 20px;">Save my contact info for immediate support, or share yours to start a quick conversation.</p>
+        
         <div style="margin-bottom: 20px; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--muted);">
             <input type="checkbox" id="hidePromptCheckbox" style="width:16px; height:16px;">
             <label for="hidePromptCheckbox">Don't show this again</label>
         </div>
-        <button onclick="downloadVCard()" class="btn btn-primary">YES, DOWNLOAD CONTACT</button>
+
+        <button onclick="handleShareTrigger()" class="btn btn-primary" style="margin-bottom: 10px;">CONNECT & SHARE INFO</button>
+        <button onclick="downloadVCard()" class="btn btn-outline">JUST SAVE CONTACT</button>
         <button onclick="closeModal('vcardModal')" class="skip-link">Maybe Later</button>
     </div>
 </div>
 
+<!-- SHARE INFO MODAL -->
+<div id="shareInfoModal" class="modal-overlay">
+    <div class="modal-box">
+        <i class="fa fa-paper-plane" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+        <h3>Who am I speaking with?</h3>
+        <p style="color: var(--muted); margin-bottom: 20px;">Enter your name below, then press "Send" on the message that appears so I recognize your call.</p>
+        
+        <div class="form-group">
+            <input type="text" id="shareNameInput" placeholder="First & Last Name" required style="text-align: center;">
+        </div>
+
+        <button onclick="finishShare()" class="btn btn-primary">FINISH & SAY HELLO</button>
+        <button onclick="closeModal('shareInfoModal')" class="skip-link">Close</button>
+    </div>
+</div>
+
+<!-- POST-SCHEDULE MODAL -->
 <div id="postScheduleModal" class="modal-overlay">
     <div class="modal-box">
         <i class="fa fa-check-circle" style="font-size: 3.5rem; color: #48bb78; margin-bottom: 25px;"></i>
@@ -261,7 +271,7 @@
         const phoneNumber = value.replace(/[^\d]/g, '');
         const phoneNumberLength = phoneNumber.length;
         if (phoneNumberLength < 4) return phoneNumber;
-        if (phoneNumberLength < 7) { return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`; }
+        if (phoneNumberLength < 7) return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
         return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
     }
 
@@ -298,35 +308,59 @@
         const name = document.getElementById('Client_Name').value;
         const phone = document.getElementById('Client_Phone').value;
         const email = document.getElementById('Client_Email').value;
-
         if (!name || !phone) { alert("Please fill in your Name and Phone Number first."); return; }
-
         schedBtn.disabled = true; submitBtn.disabled = true;
         schedBtn.innerText = "PREPARING POPUP...";
-
         const formData = new FormData(mainForm);
         formData.append("Source", "Calendly Click");
-
         try {
             await fetch(mainForm.action, { method: 'POST', body: formData, mode: 'no-cors' });
-            
-            // Clean phone number and prepend +1 for Calendly
-            const cleanPhone = "+1" + phone.replace(/[^\d]/g, '');
-
             Calendly.initPopupWidget({
-                url: 'https://calendly.com/talk2jon/quickcall',
-                prefill: {
-                    name: name,
-                    email: email,
-                    customAnswers: { a1: cleanPhone }
-                }
+                url: 'https://calendly.com/talk2jon/quickcall?country=us',
+                prefill: { name: name, email: email, customAnswers: { a1: phone } }
             });
-            
             schedBtn.innerText = "SCHEDULE MY APPOINTMENT NOW";
             schedBtn.disabled = false; submitBtn.disabled = false;
         } catch (err) {
-            Calendly.initPopupWidget({ url: 'https://calendly.com/talk2jon/quickcall' });
+            Calendly.initPopupWidget({ url: 'https://calendly.com/talk2jon/quickcall?country=us' });
             schedBtn.disabled = false; submitBtn.disabled = false;
+        }
+    }
+
+    // Share Flow Logic
+    function handleShareTrigger() {
+        downloadVCard(); // Save info first
+        setTimeout(() => {
+            closeModal('vcardModal');
+            document.getElementById('shareInfoModal').style.display = 'flex';
+        }, 1500);
+    }
+
+    async function finishShare() {
+        const name = document.getElementById('shareNameInput').value;
+        if (!name) { alert("Please enter your name."); return; }
+        
+        // Calculate follow up date (7 days, skip Sundays)
+        let fDate = new Date();
+        fDate.setDate(fDate.getDate() + 7);
+        if (fDate.getDay() === 0) fDate.setDate(fDate.getDate() + 1);
+        const fStr = fDate.toLocaleDateString() + " @ 12:00 PM";
+
+        const formData = new FormData();
+        const ref = document.getElementById('tracking_origin').value;
+        formData.append("Client_Name", name);
+        formData.append("Source", "Shared Contact (Direct SMS)");
+        formData.append("Tracking_Origin", ref);
+        formData.append("Follow_Up_Scheduled", fStr);
+        formData.append("Special_Note", "This was SHARED INFO and not a specific contact request. Reminder set for: " + fStr);
+
+        try {
+            fetch(mainForm.action, { method: 'POST', body: formData, mode: 'no-cors' });
+            const smsText = encodeURIComponent(`Hi Jon, this is ${name}. It was a pleasure connecting with you today! Looking forward to chatting soon.`);
+            window.location.href = `sms:+12095650550?body=${smsText}`;
+            closeModal('shareInfoModal');
+        } catch (e) {
+            window.location.href = `sms:+12095650550?body=${smsText}`;
         }
     }
 
@@ -354,7 +388,6 @@
         const toBase64 = URL => fetch(URL).then(r => r.blob()).then(b => new Promise((res, rej) => {
             const r = new FileReader(); r.onloadend = () => res(r.result.split(',')[1]); r.readAsDataURL(b);
         }));
-
         try {
             const base64Photo = await toBase64(photoUrl);
             const vcard = [
@@ -365,7 +398,6 @@
             ].join('\r\n');
             const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
             const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'Jon_Hungerford.vcf'; a.click();
-            document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = 'none');
         } catch (e) { console.error(e); }
     }
 

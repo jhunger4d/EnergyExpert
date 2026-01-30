@@ -317,7 +317,13 @@
             await fetch(mainForm.action, { method: 'POST', body: formData, mode: 'no-cors' });
             Calendly.initPopupWidget({
                 url: 'https://calendly.com/talk2jon/quickcall?country=us',
-                prefill: { name: name, email: email, phoneNumber: phone }
+                prefill: { 
+                    name: name, 
+                    email: email, 
+                    location: phone, 
+                    smsReminderNumber: phone,
+                    customAnswers: { a1: phone, a2: phone, a3: phone } 
+                }
             });
             schedBtn.innerText = "SCHEDULE MY APPOINTMENT NOW";
             schedBtn.disabled = false; submitBtn.disabled = false;

@@ -116,7 +116,7 @@
     <div class="hero-content">
         <h1 style="color:var(--text)">Backup Power. <br><span style="color:var(--accent)">Done Right.</span></h1>
         <p>Jon Hungerford provides professional-grade energy strategies for homeowners who value integrity over high-pressure tactics.</p>
-        <button onclick="downloadVCard()" class="btn btn-primary" style="width: auto;">SAVE MY DIRECT CONTACT</button>
+        <button onclick="forceOpenVCardModal()" class="btn btn-primary" style="width: auto;">SAVE MY DIRECT CONTACT</button>
     </div>
     <div class="hero-image">
         <img src="profile.jpg" alt="Jon Hungerford" class="profile-pic">
@@ -340,7 +340,6 @@
         const name = document.getElementById('shareNameInput').value;
         if (!name) { alert("Please enter your name."); return; }
         
-        // Calculate follow up date (7 days, skip Sundays)
         let fDate = new Date();
         fDate.setDate(fDate.getDate() + 7);
         if (fDate.getDay() === 0) fDate.setDate(fDate.getDate() + 1);
@@ -375,6 +374,12 @@
             setTimeout(() => { document.getElementById('vcardModal').style.display = 'flex'; }, 2000);
         }
     };
+
+    function forceOpenVCardModal() {
+        localStorage.removeItem('hideVCardPrompt');
+        document.getElementById('hidePromptCheckbox').checked = false;
+        document.getElementById('vcardModal').style.display = 'flex';
+    }
 
     function closeModal(modalId) {
         if (modalId === 'vcardModal' && document.getElementById('hidePromptCheckbox').checked) {

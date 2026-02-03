@@ -67,6 +67,10 @@
         .action-container { max-width: 800px; margin: 0 auto; text-align: center; }
         .action-explanation { color: var(--muted); font-size: 1.1rem; margin-bottom: 30px; }
         .action-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        
+        /* Enhanced Buttons */
+        .btn-important { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); transform: translateY(0); transition: all 0.2s; }
+        .btn-important:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
 
         /* Modal Styles */
         .form-container { background: var(--bg); padding: 30px; border-radius: 25px; width: 95%; max-width: 550px; position: relative; max-height: 90vh; overflow-y: auto; }
@@ -94,12 +98,12 @@
 
         @media (max-width: 600px) {
             section { padding: 60px 5%; }
-            .hero { padding: 40px 5%; flex-direction: column-reverse !important; }
+            .hero { padding: 40px 5%; }
             .hero h1 { font-size: 2.2rem; }
         }
 
         @media (max-width: 900px) {
-            .hero, .history-grid, .photo-grid { grid-template-columns: 1fr; flex-direction: column-reverse; text-align: center; }
+            .hero, .history-grid, .photo-grid { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
             nav { justify-content: center; text-align: center; }
             .nav-contact { text-align: center; margin-top: 10px; width: 100%; }
         }
@@ -120,8 +124,8 @@
         <img src="profile.jpg" alt="Jon Hungerford" class="profile-pic">
     </div>
     <div class="hero-content">
-        <h1 style="color:var(--text)">The service you've been hoping for, <br><span style="color:var(--accent)">backed by a reputation you can trust.</span></h1>
-        <p>Expert energy guidance focused on your long-term benefit and peace of mind.</p>
+        <h1 style="color:var(--text)">Trusted Service. <br><span style="color:var(--accent)">Proven Results.</span></h1>
+        <p>The service you've been hoping for, backed by the reputation you can trust.</p>
         <button onclick="forceOpenVCardModal()" class="btn btn-primary" style="width: auto;">SAVE MY DIRECT CONTACT</button>
     </div>
 </section>
@@ -177,13 +181,13 @@
         <p class="action-explanation">Whether you're looking for a personal energy assessment, a quick question answered, or want to help a friend, I'm only a few clicks away.</p>
         
         <div class="action-buttons">
-            <button onclick="openModal('modalSched')" class="btn btn-accent"><i class="fa fa-calendar-alt me-2"></i> Schedule a Call</button>
-            <button onclick="openModal('modalCall')" class="btn btn-primary"><i class="fa fa-phone me-2"></i> Request a Call</button>
-            <button onclick="openModal('modalRef')" class="btn btn-outline"><i class="fa fa-user-plus me-2"></i> Refer-a-Friend</button>
+            <button onclick="openModal('modalSched')" class="btn btn-accent btn-important"><i class="fa fa-calendar-alt me-2"></i> Schedule a Call</button>
+            <button onclick="openModal('modalCall')" class="btn btn-primary btn-important"><i class="fa fa-phone me-2"></i> Request a Call</button>
+            <button onclick="openModal('modalRef')" class="btn btn-outline btn-important"><i class="fa fa-user-plus me-2"></i> Refer-a-Friend</button>
         </div>
-
-        <p style="font-size: 0.65rem; color: var(--muted); margin-top: 25px; line-height: 1.3; max-width: 600px; margin-left: auto; margin-right: auto; text-align: center;">
-            * By clicking any button above, I provide my express written consent to be contacted by Jon Hungerford for marketing purposes at the phone number and/or email provided via telephone, SMS, or email, including the use of automated technology or artificial/pre-recorded voice, even if my number is currently listed on any State, Federal, or Corporate Do Not Call list. I understand that my consent is not a condition of purchase. California HIS #105699 SP.
+        
+        <p style="font-size: 0.65rem; color: var(--muted); margin-top: 40px; line-height: 1.4; max-width: 600px; margin-left: auto; margin-right: auto;">
+            By providing your information through any of the options above, you provide your express written consent to be contacted by Jon Hungerford for marketing purposes at the phone number and/or email provided via telephone, SMS, or email, including the use of automated technology, even if your number is listed on any State, Federal, or Corporate Do Not Call list. Consent is not a condition of purchase. California HIS Lic: 105699 SP.
         </p>
     </div>
 </section>
@@ -217,7 +221,7 @@
     <div class="form-container">
         <h3 style="text-align:center; margin-bottom:10px;">Request a Call</h3>
         <p style="text-align:center; color: var(--muted); font-size:0.85rem; margin-bottom:20px;">I'll reach out to answer your questions personally.</p>
-        <form id="formCall" onsubmit="handleGeneralSubmit(event, 'formCall', 'btnCallSubmit', 'Request Call')">
+        <form id="formCall" onsubmit="handleGeneralSubmit(event, 'formCall', 'btnCallSubmit', 'Call Request')">
             <div class="form-group">
                 <label>Full Name *</label>
                 <input type="text" name="Client_Name" required placeholder="Full Name">
@@ -245,7 +249,7 @@
     <div class="form-container">
         <h3 style="text-align:center; margin-bottom:10px;">Refer-a-Friend</h3>
         <p style="text-align:center; color: var(--muted); font-size:0.85rem; margin-bottom:20px;">Share the benefits of clean energy with someone you know.</p>
-        <form id="formRef" onsubmit="handleGeneralSubmit(event, 'formRef', 'btnRefSubmit', 'Refer-a-Friend')">
+        <form id="formRef" onsubmit="handleGeneralSubmit(event, 'formRef', 'btnRefSubmit', 'Referral')">
             <div class="form-group">
                 <label>Your Name *</label>
                 <input type="text" name="Client_Name" required placeholder="Your Full Name">
@@ -308,10 +312,6 @@
 <script>
     const FORM_ACTION = "https://script.google.com/macros/s/AKfycbwzKePw_zU-y8dC6a8Wh56BAqgoRrWV1lr6rR6NZSsszgGxiCy1ndHx0LP0x2nvqlY/exec";
 
-    function getReferrer() {
-        return new URLSearchParams(window.location.search).get('referrer') || "None";
-    }
-
     function formatPhoneNumber(value) {
         if (!value) return value;
         const phoneNumber = value.replace(/[^\d]/g, '');
@@ -336,7 +336,7 @@
         document.getElementById(modalId).style.display = 'none';
     }
 
-    async function handleGeneralSubmit(e, formId, btnId, buttonAction) {
+    async function handleGeneralSubmit(e, formId, btnId, buttonLabel) {
         e.preventDefault();
         const form = document.getElementById(formId);
         const btn = document.getElementById(btnId);
@@ -344,8 +344,8 @@
         btn.innerText = "SUBMITTING...";
         
         const formData = new FormData(form);
-        const sourceTag = `${getReferrer()}/${buttonAction}`;
-        formData.append("Source", sourceTag);
+        const origin = new URLSearchParams(window.location.search).get('referrer') || "None";
+        formData.append("Source", origin + " / " + buttonLabel);
 
         try {
             await fetch(FORM_ACTION, { method: 'POST', body: formData, mode: 'no-cors' });
@@ -373,13 +373,13 @@
         btn.innerText = "PREPARING...";
 
         const rawPhone = "1" + phone.replace(/[^\d]/g, '');
-        const sourceTag = `${getReferrer()}/Schedule Appointment`;
+        const origin = new URLSearchParams(window.location.search).get('referrer') || "None";
 
         const formData = new FormData();
         formData.append("Client_Name", name);
         formData.append("Client_Phone", phone);
         formData.append("Client_Email", email);
-        formData.append("Source", sourceTag);
+        formData.append("Source", origin + " / Appointment");
 
         try {
             await fetch(FORM_ACTION, { method: 'POST', body: formData, mode: 'no-cors' });
@@ -417,17 +417,20 @@
         const name = document.getElementById('shareNameInput').value;
         if (!name) { alert("Please enter your name."); return; }
         
-        const sourceTag = `${getReferrer()}/Save My Contact`;
+        const origin = new URLSearchParams(window.location.search).get('referrer') || "None";
         const formData = new FormData();
         formData.append("Client_Name", name);
-        formData.append("Source", sourceTag);
-
+        formData.append("Source", origin + " / Save Contact");
+        
         try {
             fetch(FORM_ACTION, { method: 'POST', body: formData, mode: 'no-cors' });
-            const smsText = encodeURIComponent(`Hi Jon, this is ${name}. Just saved your contact!`);
+            const smsText = encodeURIComponent(`Hi Jon, this is ${name}. ${origin} Just saved your contact!`);
             window.location.href = `sms:+12095650550?body=${smsText}`;
             closeModal('shareInfoModal');
-        } catch (e) { window.location.href = `sms:+12095650550?body=${smsText}`; }
+        } catch (e) { 
+            const smsText = encodeURIComponent(`Hi Jon, this is ${name}. ${origin} Just saved your contact!`);
+            window.location.href = `sms:+12095650550?body=${smsText}`; 
+        }
     }
 
     window.addEventListener('message', (e) => {

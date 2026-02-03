@@ -117,8 +117,8 @@
 
 <section class="hero">
     <div class="hero-content">
-        <h1 style="color:var(--text)">The service you've been hoping for, <span style="color:var(--accent)">backed by the reputation you can trust.</span></h1>
-        <p>Expert energy guidance focused on your long-term benefit and peace of mind.</p>
+        <h1 style="color:var(--text)">Trusted Service. <br><span style="color:var(--accent)">Proven Results.</span></h1>
+        <p>I provide the service you've been hoping for, backed by a reputation you can trust.</p>
         <button onclick="forceOpenVCardModal()" class="btn btn-primary" style="width: auto;">SAVE MY DIRECT CONTACT</button>
     </div>
     <div class="hero-image">
@@ -173,17 +173,17 @@
 
 <section style="background: var(--card-bg);">
     <div class="action-container">
-        <h2>Ready to Learn More?</h2>
-        <p class="action-explanation">Whether you're looking for a personal energy assessment, a quick question answered, or want to help a friend, I'm only a few clicks away.</p>
+        <h2>Professional Consultation</h2>
+        <p class="action-explanation">Whether you're looking for a detailed energy audit, a quick question answered, or want to help a friend save, I'm here to help at your pace.</p>
         
         <div class="action-buttons">
-            <button onclick="openModal('modalSched')" class="btn btn-accent"><i class="fa fa-calendar-alt me-2"></i> Schedule a Call</button>
+            <button onclick="openModal('modalSched')" class="btn btn-accent"><i class="fa fa-calendar-alt me-2"></i> Schedule Assessment</button>
             <button onclick="openModal('modalCall')" class="btn btn-primary"><i class="fa fa-phone me-2"></i> Request a Call</button>
             <button onclick="openModal('modalRef')" class="btn btn-outline"><i class="fa fa-user-plus me-2"></i> Refer-a-Friend</button>
         </div>
 
-        <p style="font-size: 0.65rem; color: var(--muted); margin-top: 25px; line-height: 1.4; max-width: 650px; margin-left: auto; margin-right: auto; text-align: center;">
-            * By clicking any button above, I provide my express written consent to be contacted by Jon Hungerford for marketing purposes at the phone number and/or email provided via telephone, SMS, or email, including the use of automated technology or artificial/pre-recorded voice, even if my number is currently listed on any State, Federal, or Corporate Do Not Call list. I understand that my consent is not a condition of purchase. California HIS #105699 SP.
+        <p style="font-size: 0.65rem; color: var(--muted); margin-top: 30px; line-height: 1.4; max-width: 700px; margin-left: auto; margin-right: auto;">
+            * By providing my contact information, I provide my express written consent to be contacted by Jon Hungerford for marketing purposes at the phone number and/or email provided via telephone, SMS, or email, including the use of automated technology or artificial/pre-recorded voice, even if my number is currently listed on any State, Federal, or Corporate Do Not Call list. I understand that my consent is not a condition of purchase. California HIS #105699 SP.
         </p>
     </div>
 </section>
@@ -458,7 +458,7 @@
                 'BEGIN:VCARD', 'VERSION:2.1', 'N:Hungerford;Jon;;;', 'FN:Jon Hungerford',
                 'ORG:Sunrun - Lic#105699 SP', 'TITLE:Energy Expert', 'TEL;CELL;VOICE:(209) 565-0550',
                 'EMAIL;PREF;INTERNET:Jon.Hungerford@Sunrun.com', 'URL:https://tinyurl.com/JonsvCard',
-                'PHOTO;JPEG;ENCODING=BASE64:' + base64Photo, 'NOTE:Your trusted energy expert.', 'END:VCARD'
+                'PHOTO;JPEG;ENCODING=BASE64:' + base64Photo, 'NOTE:Your local energy expert.', 'END:VCARD'
             ].join('\r\n');
             const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
             const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'Jon_Hungerford.vcf'; a.click();

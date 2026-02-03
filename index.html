@@ -66,7 +66,7 @@
         /* Button Section Styles */
         .action-container { max-width: 800px; margin: 0 auto; text-align: center; }
         .action-explanation { color: var(--muted); font-size: 1.1rem; margin-bottom: 30px; }
-        .action-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .action-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }
 
         /* Modal Styles */
         .form-container { background: var(--bg); padding: 30px; border-radius: 25px; width: 95%; max-width: 550px; position: relative; max-height: 90vh; overflow-y: auto; }
@@ -81,8 +81,8 @@
         .time-btn input:checked + label { background: var(--primary); color: white; border-color: var(--primary); }
 
         .btn { display: inline-block; padding: 18px 25px; border-radius: 12px; font-weight: 800; text-decoration: none; cursor: pointer; border: none; font-size: 0.95rem; width: 100%; text-align: center; transition: 0.2s; }
-        .btn-primary { background: var(--primary); color: #fff; }
-        .btn-accent { background: var(--accent); color: white; }
+        .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 4px 14px rgba(26, 54, 93, 0.25); }
+        .btn-accent { background: var(--accent); color: white; box-shadow: 0 4px 14px rgba(237, 137, 54, 0.25); }
         .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text); }
         
         .referral-block { background: var(--card-bg); padding: 15px; border-radius: 15px; margin-bottom: 15px; border: 1px dashed var(--accent); position: relative; }
@@ -118,7 +118,7 @@
 <section class="hero">
     <div class="hero-content">
         <h1 style="color:var(--text)">Trusted Service. <br><span style="color:var(--accent)">Proven Results.</span></h1>
-        <p>I provide the service you've been hoping for, backed by a reputation you can trust.</p>
+        <p>The service you've been hoping for, backed by a reputation you can trust.</p>
         <button onclick="forceOpenVCardModal()" class="btn btn-primary" style="width: auto;">SAVE MY DIRECT CONTACT</button>
     </div>
     <div class="hero-image">
@@ -173,17 +173,17 @@
 
 <section style="background: var(--card-bg);">
     <div class="action-container">
-        <h2>Professional Consultation</h2>
-        <p class="action-explanation">Whether you're looking for a detailed energy audit, a quick question answered, or want to help a friend save, I'm here to help at your pace.</p>
+        <h2>Ready to Learn More?</h2>
+        <p class="action-explanation">Whether you're looking for a personal energy assessment, a quick question answered, or want to help a friend, I'm only a few clicks away.</p>
         
         <div class="action-buttons">
-            <button onclick="openModal('modalSched')" class="btn btn-accent"><i class="fa fa-calendar-alt me-2"></i> Schedule Assessment</button>
+            <button onclick="openModal('modalSched')" class="btn btn-accent"><i class="fa fa-calendar-alt me-2"></i> Schedule a Call</button>
             <button onclick="openModal('modalCall')" class="btn btn-primary"><i class="fa fa-phone me-2"></i> Request a Call</button>
             <button onclick="openModal('modalRef')" class="btn btn-outline"><i class="fa fa-user-plus me-2"></i> Refer-a-Friend</button>
         </div>
 
-        <p style="font-size: 0.65rem; color: var(--muted); margin-top: 30px; line-height: 1.4; max-width: 700px; margin-left: auto; margin-right: auto;">
-            * By providing my contact information, I provide my express written consent to be contacted by Jon Hungerford for marketing purposes at the phone number and/or email provided via telephone, SMS, or email, including the use of automated technology or artificial/pre-recorded voice, even if my number is currently listed on any State, Federal, or Corporate Do Not Call list. I understand that my consent is not a condition of purchase. California HIS #105699 SP.
+        <p style="font-size: 0.7rem; color: var(--muted); line-height: 1.4; max-width: 600px; margin: 0 auto;">
+            * By clicking a button above, I provide my express written consent to be contacted by Jon Hungerford for marketing purposes at the phone number and/or email provided via telephone, SMS, or email, including the use of automated technology or artificial/pre-recorded voice, even if my number is currently listed on any State, Federal, or Corporate Do Not Call list. I understand that my consent is not a condition of purchase. California HIS #105699 SP.
         </p>
     </div>
 </section>
@@ -194,6 +194,7 @@
         <h3 style="text-align:center; margin-bottom:10px;">Schedule Your Call</h3>
         <p style="text-align:center; color: var(--muted); font-size:0.85rem; margin-bottom:20px;">Enter your details to open my calendar.</p>
         <form id="formSched" onsubmit="submitAndOpenCalendly(event)">
+            <input type="hidden" name="Source" value="Appointment Request">
             <div class="form-group">
                 <label>Full Name *</label>
                 <input type="text" id="Name_Sched" required placeholder="Full Name">
@@ -218,6 +219,7 @@
         <h3 style="text-align:center; margin-bottom:10px;">Request a Call</h3>
         <p style="text-align:center; color: var(--muted); font-size:0.85rem; margin-bottom:20px;">I'll reach out to answer your questions personally.</p>
         <form id="formCall" onsubmit="handleGeneralSubmit(event, 'formCall', 'btnCallSubmit')">
+            <input type="hidden" name="Source" value="Call Request">
             <div class="form-group">
                 <label>Full Name *</label>
                 <input type="text" name="Client_Name" required placeholder="Full Name">
@@ -246,6 +248,7 @@
         <h3 style="text-align:center; margin-bottom:10px;">Refer-a-Friend</h3>
         <p style="text-align:center; color: var(--muted); font-size:0.85rem; margin-bottom:20px;">Share the benefits of clean energy with someone you know.</p>
         <form id="formRef" onsubmit="handleGeneralSubmit(event, 'formRef', 'btnRefSubmit')">
+            <input type="hidden" name="Source" value="Referral">
             <div class="form-group">
                 <label>Your Name *</label>
                 <input type="text" name="Client_Name" required placeholder="Your Full Name">
@@ -368,24 +371,19 @@
         btn.disabled = true;
         btn.innerText = "PREPARING...";
 
-        // Strip characters for Calendly raw URL and add country code 1
         const rawPhone = "1" + phone.replace(/[^\d]/g, '');
 
         const formData = new FormData();
         formData.append("Client_Name", name);
         formData.append("Client_Phone", phone);
         formData.append("Client_Email", email);
-        formData.append("Source", "Calendly Click");
+        formData.append("Source", "Appointment Request");
         formData.append("Tracking_Source_QR", new URLSearchParams(window.location.search).get('referrer') || "Direct Visit");
 
         try {
             await fetch(FORM_ACTION, { method: 'POST', body: formData, mode: 'no-cors' });
-            
-            // Open Calendly with specific "location" mapping and country code 1
             const calendlyUrl = `https://calendly.com/talk2jon/quickcall?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&location=${rawPhone}`;
-            
             Calendly.initPopupWidget({ url: calendlyUrl });
-            
             closeModal('modalSched');
             btn.disabled = false;
             btn.innerText = "VIEW CALENDAR";
@@ -406,7 +404,6 @@
         document.getElementById('referral_area').appendChild(wrap);
     }
 
-    // Existing Share/VCard Logic
     function handleShareTrigger() {
         downloadVCard();
         setTimeout(() => {
@@ -420,7 +417,8 @@
         if (!name) { alert("Please enter your name."); return; }
         const formData = new FormData();
         formData.append("Client_Name", name);
-        formData.append("Source", "Shared Contact (Direct SMS)");
+        formData.append("Source", "vCard Connect");
+        formData.append("Tracking_Source_QR", new URLSearchParams(window.location.search).get('referrer') || "Direct Visit");
         try {
             fetch(FORM_ACTION, { method: 'POST', body: formData, mode: 'no-cors' });
             const smsText = encodeURIComponent(`Hi Jon, this is ${name}. Just saved your contact!`);
@@ -458,7 +456,7 @@
                 'BEGIN:VCARD', 'VERSION:2.1', 'N:Hungerford;Jon;;;', 'FN:Jon Hungerford',
                 'ORG:Sunrun - Lic#105699 SP', 'TITLE:Energy Expert', 'TEL;CELL;VOICE:(209) 565-0550',
                 'EMAIL;PREF;INTERNET:Jon.Hungerford@Sunrun.com', 'URL:https://tinyurl.com/JonsvCard',
-                'PHOTO;JPEG;ENCODING=BASE64:' + base64Photo, 'NOTE:Your local energy expert.', 'END:VCARD'
+                'PHOTO;JPEG;ENCODING=BASE64:' + base64Photo, 'NOTE:Your trusted energy expert.', 'END:VCARD'
             ].join('\r\n');
             const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
             const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'Jon_Hungerford.vcf'; a.click();

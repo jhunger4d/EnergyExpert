@@ -63,33 +63,27 @@
         .stars { color: var(--accent); margin-bottom: 15px; font-size: 0.9rem;}
         .g-link { color: var(--primary); font-weight: 700; text-decoration: none; display: block; margin-top: 40px; text-align: center; }
 
-        .form-container { max-width: 750px; margin: 0 auto; background: var(--card-bg); padding: 50px; border-radius: 30px; border: 1px solid var(--border); }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
-        input, select, textarea { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 1rem; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        label { display: block; margin-bottom: 6px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text); }
+        input, select, textarea { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 0.95rem; }
         
-        .time-options { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
-        .time-btn { flex: 1 1 100px; }
+        .time-options { display: flex; gap: 8px; margin-top: 5px; flex-wrap: wrap; }
+        .time-btn { flex: 1 1 80px; }
         .time-btn input { display: none; }
-        .time-btn label { padding: 12px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; display: block; background: var(--bg); text-align: center; font-size: 0.8rem; white-space: nowrap; }
+        .time-btn label { padding: 10px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; display: block; background: var(--bg); text-align: center; font-size: 0.75rem; white-space: nowrap; }
         .time-btn input:checked + label { background: var(--primary); color: white; border-color: var(--primary); }
 
         .btn { display: inline-block; padding: 18px 35px; border-radius: 12px; font-weight: 800; text-decoration: none; cursor: pointer; border: none; font-size: 1rem; width: 100%; text-align: center; transition: 0.2s; }
         .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text); margin-bottom: 25px; }
+        .btn-outline { background: transparent; border: 2px solid var(--border); color: var(--text); }
         .btn-schedule { background: var(--accent); color: white; }
         
-        .btn-separator { text-align: center; font-weight: 800; margin: 20px 0; color: var(--muted); position: relative; }
-        .btn-separator::before, .btn-separator::after { content: ""; position: absolute; top: 50%; width: 40%; height: 1px; background: var(--border); }
-        .btn-separator::before { left: 0; } .btn-separator::after { right: 0; }
-
-        .modal-overlay { display:none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .modal-box { background: var(--bg); padding: 40px; border-radius: 30px; text-align: center; width: 90%; max-width: 420px; border: 1px solid var(--border); }
-        .skip-link { margin-top:20px; background:none; border:none; color:var(--muted); cursor:pointer; font-weight:800; font-size:1.1rem; display:block; width:100%; text-decoration:underline; }
+        .modal-overlay { display:none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(8px); overflow-y: auto; padding: 20px; }
+        .modal-box { background: var(--bg); padding: 30px; border-radius: 30px; text-align: center; width: 100%; max-width: 450px; border: 1px solid var(--border); position: relative; }
+        .skip-link { margin-top:15px; background:none; border:none; color:var(--muted); cursor:pointer; font-weight:800; font-size:0.9rem; display:block; width:100%; text-decoration:underline; }
 
         @media (max-width: 600px) {
             section { padding: 60px 5%; }
-            .form-container { padding: 30px 15px; border-radius: 20px; }
             .hero { padding: 40px 5%; }
             .hero h1 { font-size: 2.2rem; }
             .time-btn { flex: 1 1 100%; }
@@ -115,7 +109,7 @@
 <section class="hero">
     <div class="hero-content">
         <h1 style="color:var(--text)">Trusted Service. <br><span style="color:var(--accent)">Proven Results.</span></h1>
-        <p>I provide the service you've been hoping for, backed by a reputation you can trust."</p>
+        <p>I provide the service you've been hoping for, backed by a reputation you can trust.</p>
         <button onclick="forceOpenVCardModal()" class="btn btn-primary" style="width: auto;">SAVE MY DIRECT CONTACT</button>
     </div>
     <div class="hero-image">
@@ -168,70 +162,109 @@
     <a href="https://tinyurl.com/SolarByJonReviews" target="_blank" class="g-link">See all my 5 <span class="stars"><i class="fa fa-star"></i></span> <span style="color:var(--primary)">Reviews on Google <i class="fa fa-external-link-alt ms-1"></i></span></a>
 </section>
 
-<section style="background: var(--card-bg);">
-    <div class="form-container">
-        <h2>Professional Consultation</h2>
-        <p style="text-align:center; color: var(--muted); margin-bottom: 40px;">Detailed Sustainability Audit & Energy Assessment</p>
+<!-- NEW ACTION SECTION -->
+<section style="background: var(--card-bg); text-align: center;">
+    <div style="max-width: 700px; margin: 0 auto;">
+        <h2>Take the Next Step</h2>
+        <p style="color: var(--muted); margin-bottom: 40px; font-size: 1.1rem;">Choose how you'd like to proceed: Book a specific time for an expert assessment, request a callback at my earliest convenience, or refer a friend to help them save.</p>
         
-        <form action="https://script.google.com/macros/s/AKfycbwzKePw_zU-y8dC6a8Wh56BAqgoRrWV1lr6rR6NZSsszgGxiCy1ndHx0LP0x2nvqlY/exec" method="POST" id="mainForm">
-            <input type="hidden" id="tracking_origin" name="Tracking_Source_QR" value="Direct Visit">
-            
-            <div class="form-group">
-                <label>Full Name *</label>
-                <input type="text" name="Client_Name" id="Client_Name" required placeholder="Full Name">
-            </div>
-            
-            <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <div>
-                    <label>Phone Number *</label>
-                    <input type="tel" name="Client_Phone" id="Client_Phone" required placeholder="(XXX) XXX-XXXX" class="phone-format">
-                </div>
-                <div>
-                    <label>Email (Optional)</label>
-                    <input type="email" name="Client_Email" id="Client_Email" placeholder="email@address.com">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>Best Time to Contact</label>
-                <div class="time-options">
-                    <div class="time-btn"><input type="radio" name="Contact_Pref" id="m" value="Morning"><label for="m">Morning</label></div>
-                    <div class="time-btn"><input type="radio" name="Contact_Pref" id="a" value="Afternoon" checked><label for="a">Afternoon</label></div>
-                    <div class="time-btn"><input type="radio" name="Contact_Pref" id="e" value="Evening"><label for="e">Evening</label></div>
-                </div>
-            </div>
-
-            <div id="referral_area"></div>
-            
-            <button type="button" class="btn btn-outline" onclick="addReferral()"><i class="fa fa-user-plus me-2"></i> Add a Referral?</button>
-            
-            <p style="font-size: 0.65rem; color: var(--muted); margin-bottom: 15px; line-height: 1.3;">
-                * By clicking a button below, I provide my express written consent to be contacted by Jon Hungerford for marketing purposes at the phone number and/or email provided above via telephone, SMS, or email, including the use of automated technology or artificial/pre-recorded voice, even if my number is currently listed on any State, Federal, or Corporate Do Not Call list. I understand that my consent is not a condition of purchase. California HIS #105699 SP.
-            </p>
-
-            <button type="button" id="schedBtn" class="btn btn-primary btn-schedule" onclick="submitAndOpenCalendly()">
-                <i class="fa fa-calendar-alt me-2"></i> SCHEDULE MY APPOINTMENT NOW
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <button onclick="openModal('modalSchedule')" class="btn btn-primary btn-schedule">
+                <i class="fa fa-calendar-alt me-2"></i> SCHEDULE AN ASSESSMENT CALL
             </button>
-            
-            <div class="btn-separator">OR</div>
-            
-            <button type="submit" id="submitBtn" class="btn btn-primary">REQUEST A CALL/SUBMIT A REFERRAL</button>
-        </form>
+            <button onclick="openModal('modalRequest')" class="btn btn-primary">
+                <i class="fa fa-phone-alt me-2"></i> REQUEST A CALL FROM ME
+            </button>
+            <button onclick="openModal('modalRefer')" class="btn btn-outline">
+                <i class="fa fa-user-plus me-2"></i> REFER-A-FRIEND PROGRAM
+            </button>
+        </div>
     </div>
 </section>
 
-<!-- INITIAL VCARD MODAL -->
+<!-- MODAL: SCHEDULE -->
+<div id="modalSchedule" class="modal-overlay">
+    <div class="modal-box">
+        <h3>Schedule Assessment</h3>
+        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 20px;">Provide your details to launch the calendar.</p>
+        <form id="formSchedule">
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="sched_name" required placeholder="Full Name">
+            </div>
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="sched_phone" required placeholder="(XXX) XXX-XXXX" class="phone-format">
+            </div>
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" id="sched_email" required placeholder="email@address.com">
+            </div>
+            <button type="button" class="btn btn-primary btn-schedule" onclick="handleSchedSubmit()">OPEN CALENDAR</button>
+        </form>
+        <button onclick="closeModal('modalSchedule')" class="skip-link">Cancel</button>
+    </div>
+</div>
+
+<!-- MODAL: REQUEST CALL -->
+<div id="modalRequest" class="modal-overlay">
+    <div class="modal-box">
+        <h3>Request a Call</h3>
+        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 20px;">I'll reach out to you as soon as possible.</p>
+        <form id="formRequest">
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" name="Client_Name" required placeholder="Full Name">
+            </div>
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" name="Client_Phone" required placeholder="(XXX) XXX-XXXX" class="phone-format">
+            </div>
+            <div class="form-group">
+                <label>Best Time to Contact</label>
+                <div class="time-options">
+                    <div class="time-btn"><input type="radio" name="Contact_Pref" id="rm" value="Morning"><label for="rm">Morning</label></div>
+                    <div class="time-btn"><input type="radio" name="Contact_Pref" id="ra" value="Afternoon" checked><label for="ra">Afternoon</label></div>
+                    <div class="time-btn"><input type="radio" name="Contact_Pref" id="re" value="Evening"><label for="re">Evening</label></div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">SUBMIT REQUEST</button>
+        </form>
+        <button onclick="closeModal('modalRequest')" class="skip-link">Cancel</button>
+    </div>
+</div>
+
+<!-- MODAL: REFER A FRIEND -->
+<div id="modalRefer" class="modal-overlay">
+    <div class="modal-box">
+        <h3>Refer-a-Friend</h3>
+        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 20px;">Help someone you know save on their energy bills.</p>
+        <form id="formRefer">
+            <div style="border-bottom: 1px solid var(--border); margin-bottom: 15px; padding-bottom: 10px;">
+                <label style="color:var(--accent)">Your Information</label>
+                <div class="form-group"><input type="text" name="Client_Name" placeholder="Your Name *" required></div>
+                <div class="form-group"><input type="tel" name="Client_Phone" placeholder="Your Phone *" required class="phone-format"></div>
+            </div>
+            <label style="color:var(--primary)">Friend's Information</label>
+            <div class="form-group"><input type="text" name="Referral_1_Name" placeholder="Friend's Name *" required></div>
+            <div class="form-group"><input type="tel" name="Referral_1_Phone" placeholder="Friend's Phone *" required class="phone-format"></div>
+            <input type="hidden" name="Special_Note" value="Refer-a-Friend Program Submission">
+            <button type="submit" class="btn btn-primary">SUBMIT REFERRAL</button>
+        </form>
+        <button onclick="closeModal('modalRefer')" class="skip-link">Cancel</button>
+    </div>
+</div>
+
+<!-- VCARD MODAL -->
 <div id="vcardModal" class="modal-overlay">
     <div class="modal-box">
         <i class="fa fa-address-card" style="font-size: 3.5rem; color: var(--accent); margin-bottom: 25px;"></i>
         <h3>Stay Connected</h3>
         <p style="color: var(--muted); margin-bottom: 20px;">Save my contact info for immediate support, or share yours to start a quick conversation.</p>
-        
         <div style="margin-bottom: 20px; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--muted);">
             <input type="checkbox" id="hidePromptCheckbox" style="width:16px; height:16px;">
             <label for="hidePromptCheckbox">Don't show this again</label>
         </div>
-
         <button onclick="handleShareTrigger()" class="btn btn-primary" style="margin-bottom: 10px;">CONNECT & SHARE INFO</button>
         <button onclick="downloadVCard()" class="btn btn-outline">JUST SAVE CONTACT</button>
         <button onclick="closeModal('vcardModal')" class="skip-link">Maybe Later</button>
@@ -244,11 +277,9 @@
         <i class="fa fa-paper-plane" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
         <h3>Who am I speaking with?</h3>
         <p style="color: var(--muted); margin-bottom: 20px;">Enter your name below, then press "Send" on the message that appears so I recognize your call.</p>
-        
         <div class="form-group">
             <input type="text" id="shareNameInput" placeholder="First & Last Name" required style="text-align: center;">
         </div>
-
         <button onclick="finishShare()" class="btn btn-primary">FINISH & SAY HELLO</button>
         <button onclick="closeModal('shareInfoModal')" class="skip-link">Close</button>
     </div>
@@ -266,6 +297,8 @@
 </div>
 
 <script>
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwzKePw_zU-y8dC6a8Wh56BAqgoRrWV1lr6rR6NZSsszgGxiCy1ndHx0LP0x2nvqlY/exec";
+
     function formatPhoneNumber(value) {
         if (!value) return value;
         const phoneNumber = value.replace(/[^\d]/g, '');
@@ -281,64 +314,86 @@
         }
     });
 
-    const mainForm = document.getElementById('mainForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const schedBtn = document.getElementById('schedBtn');
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-    mainForm.onsubmit = async (e) => {
+    // Handle standard form submissions (Call Request and Referral)
+    async function handleGeneralSubmit(e) {
         e.preventDefault();
-        submitBtn.disabled = true; schedBtn.disabled = true;
-        submitBtn.innerText = "SUBMITTING INFO...";
-        const formData = new FormData(mainForm);
-        try {
-            await fetch(mainForm.action, { method: 'POST', body: formData, mode: 'no-cors' });
-            submitBtn.innerText = "COMPLETED ✅";
-            setTimeout(() => {
-                submitBtn.innerText = "REQUEST A CALL/SUBMIT A REFERRAL";
-                submitBtn.disabled = false; schedBtn.disabled = false;
-                mainForm.reset();
-            }, 5000);
-        } catch (err) {
-            submitBtn.innerText = "ERROR - PLEASE RETRY";
-            submitBtn.disabled = false; schedBtn.disabled = false;
-        }
-    };
+        const form = e.target;
+        const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn.innerText;
+        btn.disabled = true;
+        btn.innerText = "SUBMITTING...";
+        
+        const formData = new FormData(form);
+        formData.append("Tracking_Source_QR", new URLSearchParams(window.location.search).get('referrer') || "Direct Visit");
 
-    async function submitAndOpenCalendly() {
-        const name = document.getElementById('Client_Name').value;
-        const phone = document.getElementById('Client_Phone').value;
-        const email = document.getElementById('Client_Email').value;
-        if (!name || !phone) { alert("Please fill in your Name and Phone Number first."); return; }
-        schedBtn.disabled = true; submitBtn.disabled = true;
-        schedBtn.innerText = "PREPARING POPUP...";
-        const formData = new FormData(mainForm);
-        formData.append("Source", "Calendly Click");
         try {
-            await fetch(mainForm.action, { method: 'POST', body: formData, mode: 'no-cors' });
+            await fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' });
+            btn.innerText = "COMPLETED ✅";
+            setTimeout(() => {
+                closeModal(form.closest('.modal-overlay').id);
+                btn.innerText = originalText;
+                btn.disabled = false;
+                form.reset();
+            }, 2000);
+        } catch (err) {
+            btn.innerText = "ERROR - RETRY";
+            btn.disabled = false;
+        }
+    }
+
+    document.getElementById('formRequest').onsubmit = handleGeneralSubmit;
+    document.getElementById('formRefer').onsubmit = handleGeneralSubmit;
+
+    async function handleSchedSubmit() {
+        const name = document.getElementById('sched_name').value;
+        const phone = document.getElementById('sched_phone').value;
+        const email = document.getElementById('sched_email').value;
+        
+        if (!name || !phone || !email) { alert("Please fill in all fields."); return; }
+
+        const btn = document.querySelector('#formSchedule button');
+        btn.disabled = true;
+        btn.innerText = "PREPARING...";
+
+        // Format phone for Calendly: "1" + digits only
+        const cleanPhone = phone.replace(/[^\d]/g, '');
+        const calendlyPhone = "1" + cleanPhone;
+
+        const formData = new FormData();
+        formData.append("Client_Name", name);
+        formData.append("Client_Phone", phone);
+        formData.append("Client_Email", email);
+        formData.append("Source", "Calendly Click");
+        formData.append("Tracking_Source_QR", new URLSearchParams(window.location.search).get('referrer') || "Direct Visit");
+
+        try {
+            await fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' });
             Calendly.initPopupWidget({
                 url: 'https://calendly.com/talk2jon/quickcall?country=us',
                 prefill: { 
                     name: name, 
                     email: email, 
-                    location: phone, 
-                    smsReminderNumber: phone,
+                    location: calendlyPhone, 
+                    smsReminderNumber: cleanPhone,
                     customAnswers: { a1: phone, a2: phone, a3: phone } 
                 }
             });
-            schedBtn.innerText = "SCHEDULE MY APPOINTMENT NOW";
-            schedBtn.disabled = false; submitBtn.disabled = false;
+            closeModal('modalSchedule');
+            btn.disabled = false;
+            btn.innerText = "OPEN CALENDAR";
         } catch (err) {
             Calendly.initPopupWidget({ url: 'https://calendly.com/talk2jon/quickcall?country=us' });
-            schedBtn.disabled = false; submitBtn.disabled = false;
         }
     }
 
-    // Share Flow Logic
     function handleShareTrigger() {
-        downloadVCard(); // Save info first
+        downloadVCard();
         setTimeout(() => {
             closeModal('vcardModal');
-            document.getElementById('shareInfoModal').style.display = 'flex';
+            openModal('shareInfoModal');
         }, 1500);
     }
 
@@ -348,19 +403,15 @@
         
         let fDate = new Date();
         fDate.setDate(fDate.getDate() + 7);
-        if (fDate.getDay() === 0) fDate.setDate(fDate.getDate() + 1);
         const fStr = fDate.toLocaleDateString() + " @ 12:00 PM";
 
         const formData = new FormData();
-        const ref = document.getElementById('tracking_origin').value;
         formData.append("Client_Name", name);
         formData.append("Source", "Shared Contact (Direct SMS)");
-        formData.append("Tracking_Origin", ref);
         formData.append("Follow_Up_Scheduled", fStr);
-        formData.append("Special_Note", "This was SHARED INFO and not a specific contact request. Reminder set for: " + fStr);
 
         try {
-            fetch(mainForm.action, { method: 'POST', body: formData, mode: 'no-cors' });
+            fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' });
             const smsText = encodeURIComponent(`Hi Jon, this is ${name}. It was a pleasure connecting with you today! Looking forward to chatting soon.`);
             window.location.href = `sms:+12095650550?body=${smsText}`;
             closeModal('shareInfoModal');
@@ -371,27 +422,20 @@
 
     window.addEventListener('message', function(e) {
         if (e.data.event && e.data.event.indexOf('calendly.event_scheduled') !== -1) {
-            document.getElementById('postScheduleModal').style.display = 'flex';
+            openModal('postScheduleModal');
         }
     });
 
     window.onload = () => {
         if (localStorage.getItem('hideVCardPrompt') !== 'true') {
-            setTimeout(() => { document.getElementById('vcardModal').style.display = 'flex'; }, 2000);
+            setTimeout(() => { openModal('vcardModal'); }, 2000);
         }
     };
 
     function forceOpenVCardModal() {
         localStorage.removeItem('hideVCardPrompt');
         document.getElementById('hidePromptCheckbox').checked = false;
-        document.getElementById('vcardModal').style.display = 'flex';
-    }
-
-    function closeModal(modalId) {
-        if (modalId === 'vcardModal' && document.getElementById('hidePromptCheckbox').checked) {
-            localStorage.setItem('hideVCardPrompt', 'true');
-        }
-        document.getElementById(modalId).style.display = 'none';
+        openModal('vcardModal');
     }
 
     async function downloadVCard() {
@@ -411,22 +455,7 @@
             const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'Jon_Hungerford.vcf'; a.click();
         } catch (e) { console.error(e); }
     }
-
-    function addReferral() {
-        let refIdx = document.querySelectorAll('.referral-block').length + 1;
-        const wrap = document.createElement('div'); wrap.className = 'referral-block'; wrap.id = `refBlock_${refIdx}`;
-        wrap.innerHTML = `
-            <span class="remove-ref" onclick="this.parentElement.remove()">REMOVE REFERRAL</span>
-            <label style="color:var(--accent)">Referral #${refIdx}</label>
-            <div class="form-group"><input type="text" name="Referral_${refIdx}_Name" placeholder="Full Name *" required></div>
-            <div class="form-group"><input type="tel" name="Referral_${refIdx}_Phone" placeholder="Phone Number *" required class="phone-format"></div>
-            <div class="form-group"><input type="email" name="Referral_${refIdx}_Email" placeholder="Email (Optional)"></div>
-        `;
-        document.getElementById('referral_area').appendChild(wrap);
-    }
-
-    const urlParams = new URLSearchParams(window.location.search);
-    if(urlParams.get('referrer')) { document.getElementById('tracking_origin').value = urlParams.get('referrer'); }
 </script>
+
 </body>
 </html>

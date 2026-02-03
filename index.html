@@ -173,11 +173,11 @@
 
 <section style="background: var(--card-bg);">
     <div class="action-container">
-        <h2>Professional Consultation</h2>
-        <p class="action-explanation">Whether you're looking for a detailed energy audit, a quick question answered, or want to help a friend save, I'm here to help at your pace.</p>
+        <h2>Ready to Learn More?</h2>
+        <p class="action-explanation">Whether you're looking for a personal energy assessment, a quick question answered, or want to help a friend, I'm only a few clicks away.</p>
         
         <div class="action-buttons">
-            <button onclick="openModal('modalSched')" class="btn btn-accent"><i class="fa fa-calendar-alt me-2"></i> Schedule Assessment</button>
+            <button onclick="openModal('modalSched')" class="btn btn-accent"><i class="fa fa-calendar-alt me-2"></i> Schedule a Call</button>
             <button onclick="openModal('modalCall')" class="btn btn-primary"><i class="fa fa-phone me-2"></i> Request a Call</button>
             <button onclick="openModal('modalRef')" class="btn btn-outline"><i class="fa fa-user-plus me-2"></i> Refer-a-Friend</button>
         </div>
@@ -454,7 +454,7 @@
                 'BEGIN:VCARD', 'VERSION:2.1', 'N:Hungerford;Jon;;;', 'FN:Jon Hungerford',
                 'ORG:Sunrun - Lic#105699 SP', 'TITLE:Energy Expert', 'TEL;CELL;VOICE:(209) 565-0550',
                 'EMAIL;PREF;INTERNET:Jon.Hungerford@Sunrun.com', 'URL:https://tinyurl.com/JonsvCard',
-                'PHOTO;JPEG;ENCODING=BASE64:' + base64Photo, 'NOTE:Your local energy expert.', 'END:VCARD'
+                'PHOTO;JPEG;ENCODING=BASE64:' + base64Photo, 'NOTE:Your trusted energy expert.', 'END:VCARD'
             ].join('\r\n');
             const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
             const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'Jon_Hungerford.vcf'; a.click();

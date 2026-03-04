@@ -814,7 +814,7 @@
 
             fetch(FORM_ACTION, { method: 'POST', body: formData, mode: 'no-cors' });
 
-            const smsText = encodeURIComponent(`Hi Jon, this is ${name}. ${origin} Just saved your contact!`);
+            const smsText = encodeURIComponent(`Hi Jon, this is ${name}. I just saved your contact!`);
 
             window.location.href = `sms:+12095650550?body=${smsText}`;
 
@@ -822,7 +822,7 @@
 
         } catch (e) { 
 
-            const smsText = encodeURIComponent(`Hi Jon, this is ${name}. ${origin} Just saved your contact!`);
+            const smsText = encodeURIComponent(`Hi Jon, this is ${name}. I just saved your contact!`);
 
             window.location.href = `sms:+12095650550?body=${smsText}`; 
 
